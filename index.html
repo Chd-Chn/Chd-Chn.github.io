@@ -2,15 +2,52 @@
 <html>
 <head>
   <title>My Data Projects</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <img src="img/Avatar.gif" alt="avatar" style="height: 5.0em; vertical-align: middle;">
-  <h1>🗺️ My Geospatial + Data Projects</h1>
-  <link rel="stylesheet" href="style.css" /> </br>
-  <ul>
-    <li><a href="map-augment/augment_vietmap.html">Augmenting KML with GeoPandas</a></li>
-    <li><a href="river-flow-model/">WIP: River Flow Prediction with XGBoost</a></li>
-    <li><a href="rail-network-analysis/">WIP: Rail Network Routing using NetworkX</a></li>
-  </ul>
+  
+  <div class="header">
+  <img src="img/Avatar.gif" alt="avatar" class="avatar">
+  <h1>🗺️ My Data Projects</h1>
+  </div>
+     
+  <div class="content">
+    <h2>Geospatial Analysis</h2>
+    An analysis of food security situation in Vietnam 🇻🇳
+    
+  <div class="entry">
+  <p>KML Preparation</p>
+    <ul class="single-bullet">
+      <li><a href="map-augment/augment_vietmap.html">Augmenting attributes into KML with GeoPandas</a></li>
+    </ul>
+  </div>
+
+  <div class="entry">
+  <p>ESDA(Exploratory Spatial Data Analysis</p>
+    <ul class="single-bullet">
+      <li><a href="historical-timeline/">WIP⛏️ Is food insecurity driven by historical conflicts?</a></li>
+      <li><a href="cmp-ASEAN/">WIP⛏️ How does VN compare to other ASEAN countries? [Excel]</a></li>
+      <li><a href="FDI/">WIP⛏️ Did VN get FDI(Foreign Direct Investment)? [Excel charting]</a></li>
+      <li><a href="land-use/">WIP⛏️ How land is used? [Spatial autocorrelation]</a></li>
+      <li><a href="housing-trend/">WIP⛏️ Housing trends as a window into regional inequality (Excel)</a></li>
+      <li><a href="inland-migration/">WIP⛏️ Is inland migration redistributing food demand? [Excel]</a></li>
+      <li><a href="global-threat/">WIP⛏️ Are there global threats? [Excel]</a></li>
+    </ul>
+  </div>  
+    
+    
+  <div class="entry">
+  <p>A machine learning experiment to predict river flows from terrain data.</p>
+    <ul class="single-bullet">
+      <li><a href="river-flow-model/">WIP⛏️ River Flow Prediction</a></li>
+    </ul>
+  </div>
+
+  <div class="entry">
+  <p>Analyzing a rail network as a graph to find key connection points.</p>
+    <ul class="single-bullet">
+      <li><a href="rail-network-analysis/">WIP⛏️ Rail Network Analysis using NetworkX</a></li>
+    </ul>
+  </div>
 </body>
 </html>
