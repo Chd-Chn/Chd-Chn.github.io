@@ -5,7 +5,8 @@ body {
   background: linear-gradient(to bottom right, #f4f6f9, #e2e8f0);
   color: #333;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: center; <!-- center -->
   align-items: center;
   min-height: 100vh;
 }
@@ -19,9 +20,39 @@ body {
   width: 100%;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  height: 5em;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.content {
+  text-align: left;
+  max-width: 800px;
+  margin: auto;
+}
+
+
 h1 {
   margin-top: 0;
   font-size: 2rem;
+}
+
+.bullets {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .project {
