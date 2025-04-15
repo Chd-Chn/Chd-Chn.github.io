@@ -13,14 +13,11 @@
   margin-bottom: 2rem;
 }
 
-.scroll-container {
-  overflow-x: auto;
+img {
   max-width: 100%;
-}
-
-.scroll-container img {
-  display: block;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* for timeline collapsible bullets */
