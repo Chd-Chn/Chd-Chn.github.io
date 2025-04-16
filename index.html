@@ -10,45 +10,87 @@
   <img src="img/Avatar.gif" alt="avatar" class="avatar">
   <h1>My Data Projects</h1>
   </div>
-     
-  <div class="content">
-    <h2>Geospatial Analysis</h2>
-    An analysis of food security situation in Vietnam 🇻🇳
+
+  <div class="kanban-board">
     
-  <div class="entry">
-  <p>KML Preparation</p>
-    <ul class="single-bullet">
-      <li><a href="map-augment/augment_vietmap.html">Augmenting attributes into KML with GeoPandas</a></li>
-    </ul>
+  <!-- PLANNED ------------------------------------------------------>  
+  <div class="kanban-column">
+    <h2>📌 Planned</h2>
+    
+    <details>
+      <summary><strong>Operationalizing </strong></summary>
+      <ul>
+        <li>Experiment with PySpark</li>
+        <li>Learn Boto3 for S3 uploads</li>
+        <li>Basic AWS Lambda deployment</li>
+      </ul>
+    </details>
   </div>
 
-  <div class="entry">
-  <p>ESDA(Exploratory Spatial Data Analysis</p>
-    <ul class="single-bullet">
-      <li><a href="timeline/timeline.html">WIP⛏️ Is food insecurity driven by historical conflicts?</a></li>
-      <li><a href="cmp-ASEAN/">WIP⛏️ How does VN compare to other ASEAN countries? [Excel]</a></li>
-      <li><a href="FDI/fdi.html">WIP⛏️ Did VN get FDI(Foreign Direct Investment)? [Excel charting]</a></li>
-      <li><a href="land-use/">WIP⛏️ How land is used? [Spatial autocorrelation]</a></li>
-      <li><a href="housing-trend/">WIP⛏️ Housing trends as a window into regional inequality (Excel)</a></li>
-      <li><a href="inland-migration/">WIP⛏️ Is inland migration redistributing food demand? [Excel]</a></li>
-      <li><a href="global-threat/">WIP⛏️ Are there global threats? [Excel]</a></li>
-      <li><a href="data-src/sources.html">What at the data sources used?</a></li>
-    </ul>
-  </div>  
-    
-    
-  <div class="entry">
-  <p>A machine learning experiment to predict river flows from terrain data.</p>
-    <ul class="single-bullet">
-      <li><a href="river-flow-model/">WIP⛏️ River Flow Prediction</a></li>
-    </ul>
+  <!-- IN PROGRESS -------------------------------------------------->  
+  <div class="kanban-column">
+    <h2>🚧 In Progress</h2>
   </div>
 
-  <div class="entry">
-  <p>Analyzing a rail network as a graph to find key connection points.</p>
-    <ul class="single-bullet">
-      <li><a href="rail-network-analysis/">WIP⛏️ Rail Network Analysis using NetworkX</a></li>
-    </ul>
-  </div>
+  <!-- DONE  -------------------------------------------------------->    
+  <div class="kanban-column">
+    <h2>✅ Done</h2>
+
+    <!-- GEOSPATIAL  ------------------------------------------------>    
+    <details>
+      <summary><strong>Geospatial Analysis 🇻🇳 </strong></summary>
+      An assessment of food security situation in Vietnam
+
+      <!-- KML PREP  ------------------------------------------------->    
+      <summary>KML preparation</summary>
+      <ul>
+        <li><a href="map-augment/augment_vietmap.html">Augmenting attributes into KML with GeoPandas</a></li>       
+      </ul>
+
+      <!-- ESDA  ----------------------------------------------------->    
+      <summary>ESDA</summary>
+      ESDA is just EDA with spatial context — every data point has a location, and the “where” matters. You can do it in Excel or go deeper with Python libraries like GeoPandas.
+      <ul>
+        <li><a href="timeline/timeline.html">Is food insecurity driven by historical conflicts? [Context understanding]</a></li>
+        <li><a href="FDI/fdi.html">Did VN get FDI(Foreign Direct Investment)? [Excel]</a></li>
+        <li><a href="land-use/landuse.html">uploading⏳ How land is used? [Spatial autocorrelation]</a></li>       
+        <li><a href="land-use/landuse.html">uploading⏳ What income level looks like across demographics? [Excel]</a></li>
+        <li><a href="data-src/sources.html">What at the data sources used?</a></li>
+      </ul>   
+
+      <!-- Transport ------------------------------------------------>    
+      <summary>Transport network assessment</summary>
+    It is crucial perishables get transported efficiently, food security cannot be complete without an effective supporting transport network.
+      <ul>
+        <li><a href="river/river.html">uploading⏳Are inland rivers a reliable network?</a></li>
+        <li><a href="highway/highway.html">uploading⏳Is the highway network good enough?</a></li>
+        <li><a href="rail/railway.html">uploading⏳What about the railway network?</a></li>
+      </ul>
+
+      <!-- UPLOADING  ------------------------------------------------>    
+      <summary>⬆️📁uploading</summary>
+      Items pending upload
+      <ul>
+        <li><a href="cmp-ASEAN/">⏳How does VN compare to other ASEAN countries? [Excel]</a></li>       
+        <li><a href="housing-trend/">⏳Housing trends as a window into regional inequality [Excel]</a></li>
+        <li><a href="inland-migration/">⏳Is inland migration redistributing food demand? [Excel]</a></li>
+        <li><a href="global-threat/">⏳Are there global threats? [Excel]</a></li>       
+      </ul>
+    </details> <!-- GEOSPATIAL CLOSE -------------------------------->    
+
+    <!-- TIME SERIES  ----------------------------------------------->    
+    <details>
+      <summary><strong>uploading⬆️📁Time series analysis</strong></summary>
+      <ul>
+        <li><a href="cmp-ASEAN/">⏳How does VN compare to other ASEAN countries? [Excel]</a></li>       
+        <li><a href="housing-trend/">⏳Housing trends as a window into regional inequality [Excel]</a></li>
+        <li><a href="inland-migration/">⏳Is inland migration redistributing food demand? [Excel]</a></li>
+        <li><a href="global-threat/">⏳Are there global threats? [Excel]</a></li>       
+      </ul>
+    </details> <!-- TIME SERIES  ----------------------------------->    
+    
+  </div> <!-- DONE COL CLOSE  -------------------------------------->    
+</div> <!-- BOARD CLOSE -------------------------------------------->    
+
 </body>
 </html>
