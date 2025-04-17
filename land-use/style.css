@@ -1,0 +1,41 @@
+.avatar {
+  height: 5em;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* for timeline collapsible bullets */
+details {
+  margin-bottom: 1rem;
+  background: #f9f9f9;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #0077b6;
+  transition: all 0.3s ease;
+}
+
+summary {
+  cursor: pointer;
+  color: #2a6f97;
+  padding: 0.2rem 0;
+}
+
+details[open] {
+  background: #eef5f9;
+}
