@@ -14597,7 +14597,28 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="LAND-USE-ESDA">LAND USE ESDA<a class="anchor-link" href="#LAND-USE-ESDA">&#182;</a></h1><p><strong>Objective</strong>: Perform Exploratory Spatial Data Analysis (ESDA) to uncover spatial patterns and dependencies in land use, demographic, and socioeconomic data across administrative units in Vietnam. The analysis will leverage spatial autocorrelation techniques such as Moran’s I and Local Indicators of Spatial Association (LISA), with results visualized using choropleth maps to highlight clusters, outliers, and spatially correlated features.</p>
+<h2 id="Food-Security-in-Vietnam-(2012%E2%80%932021):-A-Geospatial-Primer"><strong>Food Security in Vietnam (2012&#8211;2021): A Geospatial Primer</strong><a class="anchor-link" href="#Food-Security-in-Vietnam-(2012%E2%80%932021):-A-Geospatial-Primer">&#182;</a></h2><h3 id="Exploratory-Spatial-Data-Analysis-(ESDA)-of-Land-Use-and-Demographic-Variables">Exploratory Spatial Data Analysis (ESDA) of Land Use and Demographic Variables<a class="anchor-link" href="#Exploratory-Spatial-Data-Analysis-(ESDA)-of-Land-Use-and-Demographic-Variables">&#182;</a></h3><p><em>(Part of a broader study on Vietnam’s development and food security)</em></p>
+<p>This project applies <em>Exploratory Spatial Data Analysis (ESDA)</em> to explore spatial patterns and dependencies in Vietnam's land use, demographic, and socioeconomic data from 2012 to 2021. Using <em>spatial autocorrelation</em> techniques like <em>Moran’s I</em> and <em>Local Indicators of Spatial Association (LISA)</em>, the analysis identifies spatial clusters, outliers, and correlations between land use types (agriculture, forestry, homestead) and key demographic factors (population, income). The findings are visualized using choropleth maps to highlight geographic trends and insights related to food security.</p>
+<h3 id="key-Components">key Components<a class="anchor-link" href="#key-Components">&#182;</a></h3><ul>
+<li><p>Data Preparation<br />
+Cleaned and preprocessed spatial data from multiple sources to ensure consistency and readiness for analysis.</p>
+</li>
+<li><p>Spatial Data Analysis<br />
+Conducted global and local spatial autocorrelation to uncover spatial dependencies in land use and demographic variables using GeoPandas and PySAL.</p>
+</li>
+<li><p>Statistical Methods<br />
+Applied Moran’s I and Local Indicators of Spatial Association (LISA) to detect clustering, dispersion, and outliers.</p>
+</li>
+<li><p>Geospatial Visualization<br />
+Created choropleth maps and custom visualizations using Matplotlib and Folium to illustrate spatial trends and regional patterns clearly.</p>
+</li>
+<li><p>Interpretation of Spatial Patterns<br />
+Identified and interpreted spatial clusters, geographic outliers, and relationships between land use types and demographic indicators.</p>
+</li>
+</ul>
+<h3 id="Technologies-Used:">Technologies Used:<a class="anchor-link" href="#Technologies-Used:">&#182;</a></h3><ul>
+<li>Python, GeoPandas, PySAL, Matplotlib, Folium, Pandas</li>
+</ul>
 
 </div>
 </div>
@@ -14690,6 +14711,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This section loads the spatial dataset in KML format — a district-level boundary map of Vietnam enriched with temporal land use and demographic attributes. Initial previews validate structure and content before analysis begins.</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14723,8 +14756,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>🌐 Load Land Use KML File</strong></p>
-<p>The KML is a polygon dataset defining district boundaries in Vietnam, enriched with population and land use stats previously.</p>
+<p><strong>🌐 Load enriched Land Use KML</strong></p>
+<p>Imports the polygon-based KML file containing land use and population statistics across administrative units (2012, 2016, 2021).</p>
+<p>Dataset includes 48 variables across 63 units, with geometry attributes retained for geospatial analysis.</p>
 
 </div>
 </div>
@@ -14777,6 +14811,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>🔍 Quick Preview</strong></p>
+<p>Previews the structure of the loaded GeoDataFrame and confirms successful import of all relevant fields.</p>
+<p>Includes total land area, multiple land use types, population distributions, enterprise and employment data.</p>
 
 </div>
 </div>
@@ -14995,6 +15031,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>🗺️ Get Ready for Plotting</strong></p>
+<p>A reusable function is created to generate choropleth maps for land use over time. This supports consistent visualization of temporal change across different dimensions (e.g., total area, agriculture, forestry).</p>
 
 </div>
 </div>
@@ -15026,7 +15063,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot map and color according to column in kmlfile </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot map and color according to column in kml </span>
 <span class="k">def</span> <span class="nf">plot1by3</span><span class="p">(</span><span class="n">col_set</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TotalArea21&#39;</span><span class="p">,</span><span class="s1">&#39;TotalArea16&#39;</span><span class="p">,</span><span class="s1">&#39;TotalArea12&#39;</span><span class="p">]</span>
             <span class="p">,</span> <span class="n">colorscheme</span> <span class="o">=</span> <span class="s1">&#39;YlOrBr&#39;</span><span class="p">):</span>
     
@@ -15094,10 +15131,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
     <span class="c1"># prevent overlap</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-
- 
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 
      </div>
@@ -15112,9 +15146,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>plot temporal change in AU total area 2021-2016-2012</strong><br />
-identify 2 Admin Units with largest(darkest color hue) and smallest(lightest color hue) change<br />
-<em>note</em>: boundaries forming the total area in AU can be redrawn without changing total land area in a country</p>
+<h2 id="%F0%9F%93%8A-AU-Area:-Temporal-Change-(2012%E2%80%932021)">&#128202; AU Area: Temporal Change (2012&#8211;2021)<a class="anchor-link" href="#%F0%9F%93%8A-AU-Area:-Temporal-Change-(2012%E2%80%932021)">&#182;</a></h2><p>Objective: Visualize how total administrative unit area changes over time (2012, 2016, 2021).
+Note: Boundary redraws may occur without affecting overall land area of the country.</p>
+<ul>
+<li>Serves as a starting point to explore whether larger AUs tend to have a higher share of agricultural land.</li>
+<li>Highlights the 2 largest and 2 smallest administrative units by land area in each year.</li>
+<li>Encourages readers to observe stability vs. variation over time using color intensity.</li>
+</ul>
 
 </div>
 </div>
@@ -15168,7 +15206,12 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>plot change in AU total area by percentage</strong></p>
+<h2 id="%F0%9F%93%88-Percentage-Change-in-Area-(2012%E2%80%932021)">&#128200; Percentage Change in Area (2012&#8211;2021)<a class="anchor-link" href="#%F0%9F%93%88-Percentage-Change-in-Area-(2012%E2%80%932021)">&#182;</a></h2><p>Objective: Show percentage change in total land area by administrative unit between 2012 and 2021.
+This helps identify regions with significant changes (e.g., due to redistricting or boundary adjustments).</p>
+<ul>
+<li>Labels top 2 and bottom 2 provinces by area change.</li>
+<li>Color scale emphasizes magnitude of percentage shifts.</li>
+</ul>
 
 </div>
 </div>
@@ -15307,8 +15350,26 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>plot temporal change in agriculture use 2021-2016-2012</strong><br />
-identify 2 Admin Units with largest(darkest color hue) and smallest(lightest color hue) change</p>
+<h1 id="%F0%9F%A7%AD-Land-Use-Shifts-Across-Time-(2012%E2%80%932021)">&#129517; Land Use Shifts Across Time (2012&#8211;2021)<a class="anchor-link" href="#%F0%9F%A7%AD-Land-Use-Shifts-Across-Time-(2012%E2%80%932021)">&#182;</a></h1><p>Before applying spatial autocorrelation techniques like Moran’s I and LISA, this section builds an intuitive baseline of where and how land use is shifting across Vietnam. Each land type is visualized through a set of temporal choropleths (2012, 2016, 2021), highlighting both national trends and local variations.</p>
+<p>Internal reallocations on agricultural, forestry, homestead, and special-use land across administrative units may reflect economic development, urban pressure, or environmental stressors like saltwater intrusion.</p>
+<p>These choropleths help surface early signals — spatial clustering, regional contrasts — that later analysis will quantify more formally.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="%F0%9F%8C%BE-Agricultural-Land-Use:-Temporal-Change-(2012%E2%80%932021)">&#127806; Agricultural Land Use: Temporal Change (2012&#8211;2021)<a class="anchor-link" href="#%F0%9F%8C%BE-Agricultural-Land-Use:-Temporal-Change-(2012%E2%80%932021)">&#182;</a></h2><p>Objective: Visualize how agricultural land area evolved across administrative units over time.</p>
+<ul>
+<li>Highlights the 2 largest and 2 smallest agricultural areas in each year.</li>
+<li>Areas in the <strong>north show growth</strong>, while parts of the <strong>south show decline</strong>.</li>
+<li>Provides a basis to investigate whether changes are linked to urbanization, inland migration, or environmental impacts like saltwater intrusion.</li>
+</ul>
 
 </div>
 </div>
@@ -15401,7 +15462,7 @@ For regional groupings (e.g., Mekong Delta, Central Highlands), see <code>Datase
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>*<strong>% Agriculture land in province(agriculture land area in province/total province land area)</strong>*<br />
-<img src="googleshare/changeagriarea.png" alt="" /><br />
+<img src="googleshare%5Cchangeagriarea.png" alt="" /><br />
 <em>done in Excel to keep it crisp here</em></p>
 
 </div>
@@ -15681,7 +15742,9 @@ For regional groupings, see <code>Dataset Overview</code>.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Spatial-Autocorrelation">Spatial Autocorrelation<a class="anchor-link" href="#Spatial-Autocorrelation">&#182;</a></h1>
+<h1 id="%F0%9F%A7%AD-Spatial-Autocorrelation-of-Agricultural-Land-Use-(2021)">&#129517; Spatial Autocorrelation of Agricultural Land Use (2021)<a class="anchor-link" href="#%F0%9F%A7%AD-Spatial-Autocorrelation-of-Agricultural-Land-Use-(2021)">&#182;</a></h1><p>After building a visual understanding of land use changes, this section takes things a step further by asking: <em>Are these changes spatially connected?</em> Using spatial autocorrelation techniques like <strong>Moran’s I</strong> and <strong>LISA</strong>, we explore whether provinces with similar agricultural land use tend to cluster — or stand apart.</p>
+<p>We’ll begin with a global perspective to spot broad clustering patterns, then zoom into local regions to identify hotspots, coldspots, and outliers. Finally, we bring in other layers — income, population, enterprise, employment — to see how agricultural land use fits into the wider socioeconomic picture.</p>
+
 </div>
 </div>
 </div>
@@ -15761,7 +15824,8 @@ For regional groupings, see <code>Dataset Overview</code>.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Moran's I based on agriculture land use 2021</p>
+<h2 id="%F0%9F%93%88-Global-Moran%E2%80%99s-I">&#128200; Global Moran&#8217;s I<a class="anchor-link" href="#%F0%9F%93%88-Global-Moran%E2%80%99s-I">&#182;</a></h2><p><strong>Objective:</strong> Measure overall spatial clustering in agricultural land use.</p>
+<p>Global Moran’s I tells us whether agricultural land use is clustered in certain areas or spread out across the country. Essentially, it gives us a sense of how deeply entrenched agriculture is within the country’s landscape — if regions with similar agricultural land use are grouped together, we can infer that agriculture is more concentrated, rather than dispersed across urbanized or industrialized regions.</p>
 
 </div>
 </div>
@@ -15861,6 +15925,18 @@ P-value: 0.002
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's try using <code>plot_moran</code> that visualizes the distribution</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15940,7 +16016,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Local Moran</p>
+<h2 id="%F0%9F%A7%A9-Local-Moran%E2%80%99s-I-(LISA)">&#129513; Local Moran&#8217;s I (LISA)<a class="anchor-link" href="#%F0%9F%A7%A9-Local-Moran%E2%80%99s-I-(LISA)">&#182;</a></h2><p><strong>Objective:</strong> Detect local clusters(hot and cold spots) and outliers in agri-land distribution.</p>
 <p>reference
 <a href="https://pysal.org/notebooks/viz/splot/esda_morans_viz.html">esda_morans_viz</a></p>
 
@@ -16100,7 +16176,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>LISA cluster</p>
+<h2 id="%F0%9F%97%BA%EF%B8%8F-LISA-Cluster-Map-helper-function">&#128506;&#65039; LISA Cluster Map helper function<a class="anchor-link" href="#%F0%9F%97%BA%EF%B8%8F-LISA-Cluster-Map-helper-function">&#182;</a></h2><p><strong>Objective:</strong> Visualize spatial clusters using Local Moran's I.</p>
 
 </div>
 </div>
@@ -16163,23 +16239,11 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>interpreting clusters: <br />
-HH: high agri use, high use in neighbors <br />
-LH: low agri use, high use in neighbors <br />
-LL: Low agri use, low use in neighbors -- makes sense around capital Ha Noi
-ns: no significant pattern</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>combined plot</p>
+<h2 id="%F0%9F%A7%AA-Helper-function:-combining-global-and-local">&#129514; Helper function: combining global and local<a class="anchor-link" href="#%F0%9F%A7%AA-Helper-function:-combining-global-and-local">&#182;</a></h2><p><strong>Objective:</strong> Pair LISA clusters with Moran scatterplots for full spatial diagnostics.</p>
+<ul>
+<li>Combines global scatterplots with local cluster mapping.</li>
+<li>Enhances interpretability of spatial patterns and regional anomalies.</li>
+</ul>
 
 </div>
 </div>
@@ -16254,8 +16318,7 @@ ns: no significant pattern</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Spatial Autocorrelation on agricultural land use 2021 using Moran’s I(global clustering) and LISA</p>
-
+<h2 id="Spatial-Autocorrelation-on-agricultural-land-use-2021-using-Moran%E2%80%99s-I(global-clustering)-and-LISA">Spatial Autocorrelation on agricultural land use 2021 using Moran&#8217;s I(global clustering) and LISA<a class="anchor-link" href="#Spatial-Autocorrelation-on-agricultural-land-use-2021-using-Moran%E2%80%99s-I(global-clustering)-and-LISA">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -16343,7 +16406,19 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Bivariate-Land-use-vs-Income">Bivariate Land use vs Income<a class="anchor-link" href="#Bivariate-Land-use-vs-Income">&#182;</a></h2>
+<h1 id="%F0%9F%94%84-Bivariate-Spatial-Relationships-(Agri-Land-Use-vs-Other-Factors)">&#128260; Bivariate Spatial Relationships (Agri Land Use vs Other Factors)<a class="anchor-link" href="#%F0%9F%94%84-Bivariate-Spatial-Relationships-(Agri-Land-Use-vs-Other-Factors)">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="%F0%9F%92%B0-Land-Use-vs-Income-(2020)">&#128176; Land Use vs Income (2020)<a class="anchor-link" href="#%F0%9F%92%B0-Land-Use-vs-Income-(2020)">&#182;</a></h2><p><strong>Objective:</strong> Explore co-location of agriculture with income levels</p>
+
 </div>
 </div>
 </div>
@@ -16401,7 +16476,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[174]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
@@ -16410,7 +16485,6 @@ class="
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,0].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moran&#39;s I: </span><span class="si">{</span><span class="n">moran</span><span class="o">.</span><span class="n">I</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">; P-value: </span><span class="si">{</span><span class="n">moran</span><span class="o">.</span><span class="n">p_sim</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
             <span class="o">+</span> <span class="s2">&quot;neighbors weak spatial homogeneity;</span><span class="se">\n</span><span class="s2">statistically significant at &lt; 0.05&quot;</span>
             <span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">)</span>
@@ -16419,19 +16493,13 @@ class="
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
-<span class="c1"># axs[1,0].collections[0].set_color(&#39;lightseagreen&#39;)</span>
-<span class="c1"># axs[1,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_bv</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;income2020&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spatial Lag of income2020&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,1].set_facecolor(&#39;oldlace&#39;)</span>
-
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc_bv</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># axs[1,1].collections[0].set_color(&#39;lightseagreen&#39;)</span>
-<span class="c1"># axs[1,1].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agr landuse 2021&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spatial Lag of income2020&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;high agriuse-high income&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
@@ -16555,7 +16623,8 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Bivariate-Land-use-vs-Total-Avg-Population">Bivariate Land use vs <strong>Total Avg</strong> Population<a class="anchor-link" href="#Bivariate-Land-use-vs-Total-Avg-Population">&#182;</a></h2>
+<h2 id="%F0%9F%91%A5-Bivariate-Land-use-vs-Total-Avg-Population">&#128101; Bivariate Land use vs <strong>Total Avg</strong> Population<a class="anchor-link" href="#%F0%9F%91%A5-Bivariate-Land-use-vs-Total-Avg-Population">&#182;</a></h2><p><strong>Objective:</strong> Examine how land use aligns with population clusters.</p>
+
 </div>
 </div>
 </div>
@@ -16600,7 +16669,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[179]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
@@ -16609,7 +16678,6 @@ class="
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,0].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moran&#39;s I: </span><span class="si">{</span><span class="n">moran</span><span class="o">.</span><span class="n">I</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">; P-value: </span><span class="si">{</span><span class="n">moran</span><span class="o">.</span><span class="n">p_sim</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
             <span class="o">+</span> <span class="s2">&quot;neighbors weak spatial homogeneity;</span><span class="se">\n</span><span class="s2">statistically significant at &lt; 0.05&quot;</span>
             <span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">)</span>
@@ -16618,16 +16686,13 @@ class="
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
-<span class="c1"># axs[1,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_bv</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;TotAvgPopln 2020&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spatial Lag of TotAvgPopln 2020&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,1].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc_bv</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># axs[1,1].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agr landuse 2021&#39;</span><span class="p">)</span>
@@ -16673,68 +16738,6 @@ class="
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[154]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">figa</span><span class="p">,</span> <span class="n">axsa</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-
-<span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axsa</span><span class="p">)</span>
-<span class="n">axsa</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
-<span class="n">axsa</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moran&#39;s I: </span><span class="si">{</span><span class="n">moran</span><span class="o">.</span><span class="n">I</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">; P-value: </span><span class="si">{</span><span class="n">moran</span><span class="o">.</span><span class="n">p_sim</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
-            <span class="o">+</span> <span class="s2">&quot;neighbors weak spatial homogeneity;</span><span class="se">\n</span><span class="s2">statistically significant at &lt; 0.05&quot;</span>
-            <span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">)</span>
-            <span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span>
-            <span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;wheat&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[154]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>Text(1, -0.4, &#34;Moran&#39;s I: 0.3086; P-value: 0.0010\nneighbors weak spatial homogeneity;\nstatistically significant at &lt; 0.05&#34;)</pre>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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"
-class="
-"
->
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -16742,12 +16745,17 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>interpret:
-agri use and tot avg popln -0.05: no correlation or very weak dissimilarity</p>
-<p>High agri use - high popln ▶ south - must be dense <br />
-High agri use - low popln ▶ what's the main crop? <br />
-Low agri use - high popln ▶ Ho Chih Min - capital cities, makes sense <br />
-Low agri use - low popln ▶ northern admin units: coincides with income too, poorest?</p>
+<p>interpret <strong>Bivariate moran(agri use and tot avg popln)</strong></p>
+<ul>
+<li>*-0.05: no correlation or very weak dissimilarity</li>
+<li>local scatterplot with LISA<ul>
+<li>High agri use - high popln ▶ south - must be dense \</li>
+<li>High agri use - low popln ▶ what's the main crop? \</li>
+<li>Low agri use - high popln ▶ Ho Chih Min - capital cities, makes sense \</li>
+<li>Low agri use - low popln ▶ northern admin units: coincides with income too, poorest?</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -16834,7 +16842,7 @@ class="
 </li>
 <li><p>[light blue] Low agriculture land area, high population</p>
 <ul>
-<li>Seen around Hanoi in the Red River Delta</li>
+<li>Seen at fringes of Hanoi in the Red River Delta</li>
 <li>Supports the idea of urban expansion beyond the capital</li>
 </ul>
 </li>
@@ -16882,7 +16890,8 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Bivariate-Land-use-vs-Rural-Population">Bivariate Land use vs <strong>Rural</strong> Population<a class="anchor-link" href="#Bivariate-Land-use-vs-Rural-Population">&#182;</a></h2>
+<h2 id="%F0%9F%8C%BE-Bivariate-Land-use-vs-Rural-Population">&#127806; Bivariate Land use vs <strong>Rural</strong> Population<a class="anchor-link" href="#%F0%9F%8C%BE-Bivariate-Land-use-vs-Rural-Population">&#182;</a></h2><p><strong>Objective:</strong> Investigate agricultural use alignment with rural population density.</p>
+
 </div>
 </div>
 </div>
@@ -16910,7 +16919,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[188]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
@@ -16919,20 +16928,16 @@ class="
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
-<span class="c1"># axs[1,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_bv</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,1].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Rural popln 2020&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spatial Lag of Rural popln 2020&#39;</span><span class="p">)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc_bv</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># axs[1,1].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agr landuse 2021&#39;</span><span class="p">)</span>
@@ -16985,12 +16990,17 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>interpret:</p>
-<p>agri use and tot avg popln -0.1: no correlation or very weak dissimilarity</p>
-<p>High agri use - high Rpopln ▶ midnorth - hmm 🤔 <br />
-High agri use - low Rpopln ▶ Da Nang - makes sense <br />
-Low agri use - high Rpopln ▶ near Saigon, most income from employment, indicates urbanized area <br />
-Low agri use - low Rpopln ▶ northern admin units: coincides with Urban pop too, poorest?</p>
+<p>interpret <strong>Bivariate moran(agri use and rural popln)</strong></p>
+<ul>
+<li>-0.1: no correlation or very weak dissimilarity</li>
+<li>local scatterplot with LISA cluster<ul>
+<li>High agri use - high Rpopln ▶ midnorth - 🤔 area is more for forestry than agriculture</li>
+<li>High agri use - low Rpopln ▶ probably to support Da Nang - makes sense \</li>
+<li>Low agri use - high Rpopln ▶ near Ha Noi, most income from employment, indicates urbanized area \</li>
+<li>Low agri use - low Rpopln ▶ northern mountainous admin units, looks reasonable</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -17072,7 +17082,8 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Bivariate-Land-use-vs-Urban-Population">Bivariate Land use vs <strong>Urban</strong> Population<a class="anchor-link" href="#Bivariate-Land-use-vs-Urban-Population">&#182;</a></h2>
+<h2 id="%F0%9F%8F%99%EF%B8%8F-Bivariate-Land-use-vs-Urban-Population">&#127961;&#65039; Bivariate Land use vs <strong>Urban</strong> Population<a class="anchor-link" href="#%F0%9F%8F%99%EF%B8%8F-Bivariate-Land-use-vs-Urban-Population">&#182;</a></h2><p><strong>Objective:</strong> Identify urban pressures on agricultural land.</p>
+
 </div>
 </div>
 </div>
@@ -17100,7 +17111,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[192]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
@@ -17109,11 +17120,9 @@ class="
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
-<span class="c1"># axs[1,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_bv</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
@@ -17121,7 +17130,6 @@ class="
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spatial Lag of Urban popln 2020&#39;</span><span class="p">)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc_bv</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># axs[1,1].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agr landuse 2021&#39;</span><span class="p">)</span>
@@ -17174,12 +17182,17 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>interpret:</p>
-<p>agri use and Urban popln 0.0: random</p>
-<p>High agri use - high Upopln ▶ south - hmm 🤔 <br />
-High agri use - low Upopln ▶ northwest - compare with rural pop, and total pop, sparse pop area? <br />
-Low agri use - high Upopln ▶ near HoChihMin, naturally <br />
-Low agri use - low Upopln ▶ northern admin units: coincides with Urban pop too, poorest?</p>
+<p>interpret <strong>Bivariate moran(agri use and Urban popln)</strong></p>
+<ul>
+<li>0.0: random</li>
+<li>local scatterplot with LISA cluster<ul>
+<li>High agri use - high Upopln ▶ south - hmm 🤔 \</li>
+<li>High agri use - low Upopln ▶ northwest - compare with rural pop, and total pop, sparse pop area? \</li>
+<li>Low agri use - high Upopln ▶ near HoChihMin, naturally \</li>
+<li>Low agri use - low Upopln ▶ northern admin units: coincides with Urban pop too, poorest?</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -17338,7 +17351,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[204]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
@@ -17347,11 +17360,9 @@ class="
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
-<span class="c1"># axs[1,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_bv</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
@@ -17359,7 +17370,6 @@ class="
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spatial Lag of No.ofEnterprises 2020&#39;</span><span class="p">)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc_bv</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># axs[1,1].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agr landuse 2021&#39;</span><span class="p">)</span>
@@ -17412,12 +17422,17 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>interpret:</p>
-<p>agri use and No Enterprise -0.03: spatial randomness</p>
-<p>High agri use - high NoEntpr ▶ south - rice bowl region, hmm 🤔 what enterprises? <br />
-High agri use - low NoEntpr ▶ northwest - compare with rural pop, and total pop, sparse pop area? <br />
-Low agri use - high NoEntpr ▶ near HoChihMin, naturally <br />
-Low agri use - low NoEntpr ▶ northern admin units: coincides with Urban pop too, poorest?</p>
+<p>interpret <strong>Bivariate moran(agri use and no. enterprise)</strong></p>
+<ul>
+<li>-0.03: spatial randomness</li>
+<li>local scatterplot with LISA cluster<ul>
+<li>High agri use - high NoEntpr ▶ south - rice bowl region, hmm 🤔 what enterprises? \</li>
+<li>High agri use - low NoEntpr ▶ northwest - compare with rural pop, and total pop, sparse pop area? \</li>
+<li>Low agri use - high NoEntpr ▶ near HoChihMin, naturally \</li>
+<li>Low agri use - low NoEntpr ▶ northern admin units: coincides with Urban pop too, poorest?</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -17576,7 +17591,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[208]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
@@ -17585,10 +17600,8 @@ class="
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
-<span class="c1"># axs[0,0].set_facecolor(&#39;oldlace&#39;)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="c1"># axs[1,0].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agri landuse 2021&#39;</span><span class="p">)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_bv</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
@@ -17597,7 +17610,6 @@ class="
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spatial Lag of EntprEmploy 2020&#39;</span><span class="p">)</span>
 
 <span class="n">moran_scatterplot</span><span class="p">(</span><span class="n">moran_loc_bv</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># axs[1,1].set_facecolor(&#39;oldlace&#39;)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;agr landuse 2021&#39;</span><span class="p">)</span>
@@ -17650,9 +17662,14 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>interpret:</p>
-<p>agri use and No. Employed by Enterprises -0.07: spatial randomness</p>
-<p>very minor difference with No.Enterprises near 2 capital cities(Saigon, HoChihMinh city) for Low agriuse and high employment</p>
+<p>interpret <strong>Bivariate moran(agri use and No. Employed by Enterprises)</strong></p>
+<ul>
+<li>-0.07: spatial randomness</li>
+<li>local scatterplot with LISA cluster<ul>
+<li>very minor difference with No.Enterprises near 2 capital cities(Ha Noi, HoChihMinh city) for Low agriuse and high employment</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -17760,8 +17777,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Temporal change in farm population</strong><br />
-<em>Vietnam underwent farm consolidation for resource optimization</em></p>
+<h2 id="Temporal-change-in-farm-population">Temporal change in farm population<a class="anchor-link" href="#Temporal-change-in-farm-population">&#182;</a></h2><p><em>Vietnam underwent farm consolidation for resource optimization</em></p>
 <p><img src="googleshare/farmCount.png" alt="" /></p>
 
 </div>
@@ -17774,8 +17790,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Land allocation(%) to farm</strong></p>
-<p><em>From land allocated(pie chart) by province(bars) to number of farms(stacked bars)</em><br />
+<h2 id="Land-allocation(%25)-to-farm">Land allocation(%) to farm<a class="anchor-link" href="#Land-allocation(%25)-to-farm">&#182;</a></h2><p><em>From land allocated(pie chart) by province(bars) to number of farms(stacked bars)</em><br />
 <em>reduced number of farms reflects consolidation though allocated agriculture land increased</em></p>
 <p><img src="googleshare/landAllocation.png" alt="" /></p>
 
@@ -17789,8 +17804,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Cultivation farms by Province</strong><br />
-<em>Cultivation concentrated in southern provinces</em></p>
+<h2 id="Cultivation-farms-by-Province">Cultivation farms by Province<a class="anchor-link" href="#Cultivation-farms-by-Province">&#182;</a></h2><p><em>Cultivation concentrated in southern provinces</em></p>
 <p><img src="googleshare/farms_culti.png" alt="" /></p>
 
 </div>
@@ -17803,8 +17817,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>land allocation to cultivation output</strong><br />
-<em>translating land area to crop types and output</em></p>
+<h2 id="land-allocation-to-cultivation-output">land allocation to cultivation output<a class="anchor-link" href="#land-allocation-to-cultivation-output">&#182;</a></h2><p><em>translating land area to crop types and output</em></p>
 <p><img src="googleshare/farms_cultiOut.png" alt="" /></p>
 
 </div>
@@ -17817,8 +17830,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>change in livestock farm count</strong><br />
-<em>farms concentrated around most populous AUs, indicative of higher income(corroborated by income plot) and accessibility to animal protein</em></p>
+<h2 id="change-in-livestock-farm-count">change in livestock farm count<a class="anchor-link" href="#change-in-livestock-farm-count">&#182;</a></h2><p><em>farms concentrated around most populous AUs, indicative of higher income(corroborated by income plot) and accessibility to animal protein</em></p>
 <p><img src="googleshare/farms_live.png" alt="" /></p>
 
 </div>
@@ -17831,8 +17843,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Total Household income by AU</strong><br />
-<em>High income AUs concentrated around capital city, Ha Noi and Ho Chih Minh City. Income is likely derived from employment and high number of enterprises(corroborated by employment and enterprise count plots). Total monthly household income = Employment salary + Self-employment(AFF + Non-AFF) + Others</em></p>
+<h2 id="Total-Household-income-by-AU">Total Household income by AU<a class="anchor-link" href="#Total-Household-income-by-AU">&#182;</a></h2><p><em>High income AUs concentrated around capital city, Ha Noi and Ho Chih Minh City. Income is likely derived from employment and high number of enterprises(corroborated by employment and enterprise count plots). Total monthly household income = Employment salary + Self-employment(AFF + Non-AFF) + Others</em></p>
 <p><em>AFF: Agriculture, Forestry, Fishery</em></p>
 <p><img src="googleshare/income.png" alt="" /></p>
 
@@ -17846,8 +17857,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Household income spread by geolocation</strong></p>
-<p><img src="googleshare/income_spread.png" alt="" /></p>
+<h2 id="Household-income-spread-by-AU-and-Province">Household income spread by AU and Province<a class="anchor-link" href="#Household-income-spread-by-AU-and-Province">&#182;</a></h2><p><img src="googleshare/income_spread.png" alt="" /></p>
 
 </div>
 </div>
@@ -17859,8 +17869,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Spread of total household income components by province</strong><br />
-<em>poverty line indicative of food security amongst households</em></p>
+<h2 id="Spread-of-total-household-income-components-by-province">Spread of total household income components by province<a class="anchor-link" href="#Spread-of-total-household-income-components-by-province">&#182;</a></h2><p><em>poverty line indicative of food security amongst households</em></p>
 <p><img src="googleshare/income_spread2.png" alt="" /></p>
 
 </div>
@@ -17873,9 +17882,8 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Temporal change in Total Income</strong><br />
-<em>changes from 2010(green, baseline) to 2016 and 2020. coloration in choropleth indicates rapid rise from 2010 to 2016 and slowdown between 2016 to 2020. The Central highlands appear to be particularly affected by the slowdown</em></p>
-<p><img src="googleshare/AU_province.pngincome_temporal.png" alt="" /></p>
+<h2 id="Temporal-change-in-Total-Income">Temporal change in Total Income<a class="anchor-link" href="#Temporal-change-in-Total-Income">&#182;</a></h2><p><em>changes from 2010(green, baseline) to 2016 and 2020. coloration in choropleth indicates rapid rise from 2010 to 2016 and slowdown between 2016 to 2020. The Central highlands appear to be particularly affected by the slowdown</em></p>
+<p><img src="googleshare%5Cincome_temporal.png" alt="" /></p>
 
 </div>
 </div>
