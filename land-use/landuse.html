@@ -3,29 +3,268 @@
 <head>
   <title>ESDA Land Use</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
 </head>
 <body>
-  
+    
   <div class="header">
-  <img src="../img/Avatar.gif" alt="avatar" class="avatar">
-  <h1>ESDA</h1>
-</div>
+    <img src="../img/Avatar.gif" alt="avatar" class="avatar">
+    <h1>ESDA</h1>
+  </div>
+    
+<div class="accordion-section">
+  <div class="accordion-header">Employment in Enterprises</div>
+  <div class="accordion-content">
+    <table class="autocorr-table">
+      <thead>
+        <tr>
+          <th>Map</th>
+          <th>Pattern</th>
+          <th>Cluster Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4">
+            <img src="map-enterprise-clusters.png" alt="Cluster Map" class="map-thumb">
+          </td>
+          <td>Hi-Hi (Hotspot)</td>
+          <td class="cluster-text">SE: Tay Ninh, Long An, Binh Duong, Binh Phuoc, Dong Nai</td>
+        </tr>
+        <tr>
+          <td>Hi-Lo</td>
+          <td class="cluster-text">NMM: Dien Bien, Ha Giang; MRD: Soc Trang, Kien Giang</td>
+        </tr>
+        <tr>
+          <td>Lo-Hi</td>
+          <td class="cluster-text">NMM: Bac Giang; SE: Ba Ria–Vung Tau, HCMC; MRD: Tien Giang</td>
+        </tr>
+        <tr>
+          <td>Lo-Lo (Coldspot)</td>
+          <td class="cluster-text">NMM: Lai Chau, Lao Cai, Yen Bai, Cao Bang; Northern Central: Khanh Hoa</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> <!-- end accordion-content -->
 
-<div class="entry">
-  <p>ESDA</p>
+    <div class="accordion-section">
+    <div class="accordion-header">Number of Enterprises</div>
+    <div class="accordion-content">
+      <table class="autocorr-table">
+        <thead>
+          <tr>
+            <th>Map</th>
+            <th>Pattern</th>
+            <th>Cluster Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4">
+              <img src="map-enterprises-clusters.png" alt="Cluster Map" class="map-thumb">
+            </td>
+            <td>Hi-Hi (Hotspot)</td>
+            <td class="cluster-text">SE: Tay Ninh, Long An, Binh Duong, Binh Phuoc, Dong Nai</td>
+          </tr>
+          <tr>
+            <td>Hi-Lo</td>
+            <td class="cluster-text">NMM: Dien Bien, Ha Giang; MRD: Soc Trang</td>
+          </tr>
+          <tr>
+            <td>Lo-Hi</td>
+            <td class="cluster-text">SE: Ba Ria-Vung Tau, HCMC; MRD: Tien Giang</td>
+          </tr>
+          <tr>
+            <td>Lo-Lo (Coldspot)</td>
+            <td class="cluster-text">NMM: Lai Chau, Lao Cai, Yen Bai, Cao Bang; Northern Central: Khanh Hoa</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> <!-- end no enterprise content --->
+    </div> <!-- end no enterprise section --->
+</div> <!-- end employ enterprise section --->
 
-  <details>
-    <summary><strong>📊 ESDA Primer: Land Use & Demographics (2012–2021)</strong></summary>
-    <p>
-    This primer provides a detailed geospatial analysis of land use patterns and demographic trends across Vietnam, utilizing spatial autocorrelation techniques such as Moran’s I and LISA.
-    The analysis explores the relationships between different land use types (agriculture, forestry, homestead) and key demographic factors like income, population, and employment.
-    Visualizations, including choropleth maps and spatial clustering, illustrate these relationships, revealing spatial patterns and trends across the country.
-    </p>
-    <a href="landUseESDA.html">🔗 View the full ESDA primer with visualizations</a>
-  </details>
+<div class="accordion-section">
+  <div class="accordion-header">Total Average Population Distribution</div>
+  <div class="accordion-content">
+    <table class="autocorr-table">
+      <thead>
+        <tr>
+          <th>Map</th>
+          <th>Pattern</th>
+          <th>Cluster Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4">
+            <img src="map-population-clusters.png" alt="Cluster Map" class="map-thumb">
+          </td>
+          <td>Hi-Hi (Hotspot)</td>
+          <td class="cluster-text">SE: Ho Chi Minh City, Ba Ria-Vung Tau, Dong Nai</td>
+        </tr>
+        <tr>
+          <td>Hi-Lo</td>
+          <td class="cluster-text">NMM: Ha Giang, Lai Chau</td>
+        </tr>
+        <tr>
+          <td>Lo-Hi</td>
+          <td class="cluster-text">NMM: Bac Ninh, Hoa Binh, Bac Giang</td>
+        </tr>
+        <tr>
+          <td>Lo-Lo (Coldspot)</td>
+          <td class="cluster-text">North West: Cao Bang, Yen Bai</td>
+        </tr>
+      </tbody>
+    </table> 
+  </div> <!-- end population content --->
 
-</div>
+    <div class="accordion-section">
+    <div class="accordion-header">Rural Population</div>
+    <div class="accordion-content">
+      <table class="autocorr-table">
+        <thead>
+          <tr>
+            <th>Map</th>
+            <th>Pattern</th>
+            <th>Cluster Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4">
+              <img src="map-rural-population-clusters.png" alt="Cluster Map" class="map-thumb">
+            </td>
+            <td>Hi-Hi (Hotspot)</td>
+            <td class="cluster-text">Northern Central: Nghe An</td>
+          </tr>
+          <tr>
+            <td>Hi-Lo</td>
+            <td class="cluster-text">NMM: Ha Giang; Central Coastal: Quang Nam</td>
+          </tr>
+          <tr>
+            <td>Lo-Hi</td>
+            <td class="cluster-text">Red River Delta: Hoa Binh, Ha Nam, Hung Yen, Bac Ninh, Vinh Phuc</td>
+          </tr>
+          <tr>
+            <td>Lo-Lo (Coldspot)</td>
+            <td class="cluster-text">North Midlands and Mountain Areas: Cao Bang</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> <!-- end rural content --->
+    </div> <!-- end rural section --->
 
- 
+    <div class="accordion-section">
+    <div class="accordion-header">Urban Population</div>
+    <div class="accordion-content">
+      <table class="autocorr-table">
+        <thead>
+          <tr>
+            <th>Map</th>
+            <th>Pattern</th>
+            <th>Cluster Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4">
+              <img src="map-urban-population-clusters.png" alt="Cluster Map" class="map-thumb">
+            </td>
+            <td>Hi-Hi (Hotspot)</td>
+            <td class="cluster-text">SE: Tay Ninh, Long An, Binh Duong, Binh Phuoc, Dong Nai</td>
+          </tr>
+          <tr>
+            <td>Hi-Lo</td>
+            <td class="cluster-text">NMM: Dien Bien, Ha Giang</td>
+          </tr>
+          <tr>
+            <td>Lo-Hi</td>
+            <td class="cluster-text">SE: Ba Ria-Vung Tau</td>
+          </tr>
+          <tr>
+            <td>Lo-Lo (Coldspot)</td>
+            <td class="cluster-text">North Midlands and Mountain Areas: Lai Chau, Lao Cai, Yen Bai, Tuyen Quang, Bac Kan, Cao Bang</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> <!-- end urban content --->
+    </div> <!-- end urban section --->
+
+  </div> <!-- end population content --->  
+  </div> <!-- end population section --->
+
+  <div class="accordion-section">
+    <div class="accordion-header">Income Patterns</div>
+    <div class="accordion-content">
+    <table class="autocorr-table">
+      <thead>
+        <tr>
+          <th>Map</th>
+          <th>Pattern</th>
+          <th>Cluster Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4">
+            <img src="map-income-clusters.png" alt="Cluster Map" class="map-thumb">
+          </td>
+          <td>Hi-Hi (Hotspot)</td>
+          <td class="cluster-text">SE: Tay Ninh, Long An, Binh Duong, Binh Phuoc</td>
+        </tr>
+        <tr>
+          <td>Hi-Lo</td>
+          <td class="cluster-text">NMM: Dien Bien, Ha Giang</td>
+        </tr>
+        <tr>
+          <td>Lo-Hi</td>
+          <td class="cluster-text">SE: HCMC, Ba Ria Vung Tau</td>
+        </tr>
+        <tr>
+          <td>Lo-Lo (Coldspot)</td>
+          <td class="cluster-text">North West: Lai Chau, Lao Cai</td>
+        </tr>
+      </tbody>
+    </table>
+    </div> <!-- end income content --->
+  </div> <!-- end income section --->
+
+  <div class="accordion-section">
+  <div class="accordion-header">Farms: Distribution and Diversity</div>
+  <div class="accordion-content">
+    <table class="autocorr-table">
+      <thead>
+        <tr>
+          <th>Map</th>
+          <th>Pattern</th>
+          <th>Cluster Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4">
+            <img src="map-farm-clusters.png" alt="Cluster Map" class="map-thumb">
+          </td>
+          <td>Hi-Hi (Hotspot)</td>
+          <td class="cluster-text">MRD: An Giang, Kien Giang</td>
+        </tr>
+        <tr>
+          <td>Hi-Lo</td>
+          <td class="cluster-text">NMM: Bac Giang, Thanh Hoa</td>
+        </tr>
+        <tr>
+          <td>Lo-Hi</td>
+          <td class="cluster-text">SE: Ba Ria-Vung Tau, HCMC</td>
+        </tr>
+        <tr>
+          <td>Lo-Lo (Coldspot)</td>
+          <td class="cluster-text">Central Coast: Khanh Hoa, Quang Ngai</td>
+        </tr>
+      </tbody>
+    </table>
+    </div> <!-- end farms content --->
+  </div> <!-- end farms section --->
+  
 </body>
 </html>
