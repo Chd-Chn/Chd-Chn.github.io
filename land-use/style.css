@@ -14,7 +14,31 @@
   margin-bottom: 2rem;
 }
 
-/* revamped*/
+
+/*global moran at top intro*/
+.two-col-layout {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  align-items: flex-start;
+}
+
+.col.left {
+  flex: 1;
+}
+
+.col.right {
+  flex: 2;
+}
+
+/*shrink by 50%*/
+.lisa-map {
+  width: 50%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 /* Styling for the Accordion (Card Style) */
 .accordion-section {
   margin: 1em 0;
@@ -135,4 +159,3 @@ table.autocorr-icons td {
 .cluster-text {
   color: #555; /* Dark text color for cluster info */
 }
-
