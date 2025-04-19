@@ -13,30 +13,126 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-/*
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-*/
-/* for timeline collapsible bullets */
-details {
-  margin-bottom: 1rem;
-  background: #f9f9f9;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border-left: 4px solid #0077b6;
-  transition: all 0.3s ease;
+
+/* revamped*/
+/* Styling for the Accordion (Card Style) */
+.accordion-section {
+  margin: 1em 0;
+  border: 1px solid #dce3ea; /* Card border color */
+  border-radius: 8px; /* Rounded corners from card style */
+  padding: 1.2em; /* Padding from card style */
+  background-color: #f9fbfd; /* Light background color from card */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Box shadow from card */
+  font-family: "Segoe UI", "Helvetica", sans-serif; /* Font family from card */
 }
 
-summary {
+.accordion-header {
+  font-size: 1.2em;
   cursor: pointer;
-  color: #2a6f97;
-  padding: 0.2rem 0;
+  margin: 0;
+  padding: 10px;
+  background-color: #00747C; /* Blue background */
+  color: white;
+  border-radius: 5px;
+  text-align: left;
+  transition: background-color 0.3s ease;
 }
 
-details[open] {
-  background: #eef5f9;
+.accordion-header:hover {
+  background-color: #0056b3;
 }
+
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+  background-color: #f1f1f1; /* Light gray background for content */
+}
+
+/* When the section has the "open" class, show the content */
+.accordion-section.open .accordion-content {
+  display: block;
+}
+
+/* Styling for Tables inside Accordion */
+table.autocorr-icons {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.autocorr-icons th,
+table.autocorr-icons td {
+  padding: 10px;
+  border: 1px solid #ddd; /* Light border for table cells */
+  text-align: left;
+}
+
+.icon {
+  font-size: 1.5em;
+  text-align: center;
+  width: 50px;
+  position: relative;
+}
+
+/* Removed popover styles */
+.popover {
+  display: none;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+/* Removed hover behavior for icons */
+.icon:hover .popover {
+  display: block;
+}
+
+/* Styling for Card Elements */
+.card h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #2a3f54; /* Dark text color */
+}
+
+.autocorr-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  font-size: 0.95em;
+}
+
+.autocorr-table th {
+  background-color: #e5edf5; /* Light background for headers */
+  color: #2a3f54; /* Dark text color */
+  text-align: left;
+  padding: 0.6em;
+  border-bottom: 1px solid #dce3ea; /* Border color from card */
+}
+
+.autocorr-table td {
+  padding: 0.6em;
+  vertical-align: top;
+  border-bottom: 1px solid #edf2f7; /* Light gray border for rows */
+}
+
+.map-thumb {
+  width: 60px;
+  border-radius: 4px;
+  border: 1px solid #dce3ea; /* Border color from card */
+}
+
+.pattern-icon {
+  font-size: 1.1em;
+  padding-right: 0.5em;
+}
+
+.cluster-text {
+  color: #555; /* Dark text color for cluster info */
+}
+
