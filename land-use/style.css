@@ -23,7 +23,7 @@
 }
 
 .col.left {
-  width: 35%; /* Set to a tight size */
+  width: 15%; /* Set to a tight size */
 }
 
 .col.right {
@@ -147,7 +147,7 @@ table.autocorr-icons td {
 }
 
 .map-thumb {
-  width: 60px;
+  width: 120px;
   border-radius: 4px;
   border: 1px solid #dce3ea; /* Border color from card */
 }
