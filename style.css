@@ -95,38 +95,28 @@ a:hover {
   text-decoration: underline;
 }
 
-/* obsolete
-h1 {
-  margin: 0;
-  font-size: 2rem;
+/* Basic styling for the intro section */
+.intro {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.content {
-  max-width: 800px;
-  width: 100%;
-  padding: 0 2rem;
-  text-align: left;
+.intro h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-.entry {
-  margin-bottom: 2rem;
+.intro p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
 }
 
-.entry p {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #444;
+.intro em {
+  font-style: italic;
 }
-
-.single-bullet {
-  list-style-type: circle;
-  padding-left: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.single-bullet li {
-  margin-bottom: 0.5rem;
-}
-
-*/
