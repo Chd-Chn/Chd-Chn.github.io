@@ -34,7 +34,7 @@
 
 /* Map image in intro */
 .lisa-map {
-  width: 50%;
+  width: 70%;
   height: auto;
   border: 1px solid #ccc;
   border-radius: 1px;
@@ -100,7 +100,7 @@
 }
 
 .map-thumb {
-  width: 120px;
+  width: 150px;
   border-radius: 4px;
   border: 1px solid #dce3ea;
 }
