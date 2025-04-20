@@ -1,4 +1,4 @@
-/* avatar next to title */
+/* Avatar next to title */
 .avatar {
   height: 5em;
   vertical-align: middle;
@@ -10,45 +10,45 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
-
-/*global moran at top intro*/
+/* Two-column layout for intro section */
 .two-col-layout {
   display: flex;
-  justify-content: space-between; /* Space between columns */
-  gap: 20px; /* Add some space between the columns */
+  gap: 20px;
 }
 
 .col.left {
-  width: 15%; /* Set to a tight size */
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .col.right {
-    width: 90%; /* Text column takes up remaining space */
-  padding: 10px;
+  width: 85%;
+  padding: 5px;
   box-sizing: border-box;
 }
 
-/*shrink by 50%*/
+/* Map image in intro */
 .lisa-map {
   width: 50%;
   height: auto;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 1px;
 }
 
-/* Styling for the Accordion (Card Style) */
+/* Accordion styling */
 .accordion-section {
   margin: 1em 0;
-  border: 1px solid #dce3ea; /* Card border color */
-  border-radius: 8px; /* Rounded corners from card style */
-  padding: 1.2em; /* Padding from card style */
-  background-color: #f9fbfd; /* Light background color from card */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Box shadow from card */
-  font-family: "Segoe UI", "Helvetica", sans-serif; /* Font family from card */
+  border: 1px solid #dce3ea;
+  border-radius: 8px;
+  padding: 1.2em;
+  background-color: #f9fbfd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", "Helvetica", sans-serif;
 }
 
 .accordion-header {
@@ -56,7 +56,7 @@
   cursor: pointer;
   margin: 0;
   padding: 10px;
-  background-color: #00747C; /* Blue background */
+  background-color: #00747C;
   color: white;
   border-radius: 5px;
   text-align: left;
@@ -67,64 +67,17 @@
   background-color: #0056b3;
 }
 
-
 .accordion-content {
   display: none;
   padding: 10px;
-  background-color: #f1f1f1; /* Light gray background for content */
+  background-color: #f1f1f1;
 }
 
-/* When the section has the "open" class, show the content */
 .accordion-section.open .accordion-content {
   display: block;
 }
 
-/* Styling for Tables inside Accordion */
-table.autocorr-icons {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table.autocorr-icons th,
-table.autocorr-icons td {
-  padding: 10px;
-  border: 1px solid #ddd; /* Light border for table cells */
-  text-align: left;
-}
-
-.icon {
-  font-size: 1.5em;
-  text-align: center;
-  width: 50px;
-  position: relative;
-}
-
-/* Removed popover styles */
-.popover {
-  display: none;
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 0.8em;
-}
-
-/* Removed hover behavior for icons */
-.icon:hover .popover {
-  display: block;
-}
-
-/* Styling for Card Elements */
-.card h3 {
-  margin-top: 0;
-  font-size: 1.2em;
-  color: #2a3f54; /* Dark text color */
-}
-
+/* Table styling */
 .autocorr-table {
   width: 100%;
   border-collapse: collapse;
@@ -133,30 +86,25 @@ table.autocorr-icons td {
 }
 
 .autocorr-table th {
-  background-color: #e5edf5; /* Light background for headers */
-  color: #2a3f54; /* Dark text color */
+  background-color: #e5edf5;
+  color: #2a3f54;
   text-align: left;
   padding: 0.6em;
-  border-bottom: 1px solid #dce3ea; /* Border color from card */
+  border-bottom: 1px solid #dce3ea;
 }
 
 .autocorr-table td {
   padding: 0.6em;
   vertical-align: top;
-  border-bottom: 1px solid #edf2f7; /* Light gray border for rows */
+  border-bottom: 1px solid #edf2f7;
 }
 
 .map-thumb {
   width: 120px;
   border-radius: 4px;
-  border: 1px solid #dce3ea; /* Border color from card */
-}
-
-.pattern-icon {
-  font-size: 1.1em;
-  padding-right: 0.5em;
+  border: 1px solid #dce3ea;
 }
 
 .cluster-text {
-  color: #555; /* Dark text color for cluster info */
+  color: #555;
 }
