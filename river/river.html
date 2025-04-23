@@ -8,7 +8,7 @@
 
     <div class="header">
       <img src="../img/Avatar.gif" alt="avatar" class="avatar">
-      <h1>Inland River Network(IRW) Analysis </h1>
+      <h1>Inland River Network(IRW) Analysis</h1>
     </div>
 
     <div class="content">
@@ -31,8 +31,8 @@
         </button>
         <div class="accordion-content">
           <div class="content">
-            <p class="step-description"><strong>Inference:</strong>Contextual knowledge of Vietnamese IRW is a requisite to making inferences on its quality. Here are two specific areas.</p>
-             
+            <p class="step-description">IRW assessment depends heavily on inference. Contextual knowledge holds equal, if not greater, importance than the supporting statistics involved. Here are two key requisite areas of knowledge for making high-quality inferences.</p>
+
           </div>
           <table class="network-table">
             <thead>
@@ -48,7 +48,7 @@
                   <p class="step-description">
                     These freight volume charts provide the baseline understanding of inland river waterways (IRWs) throughput by province. When combined with river flow rates and river port centrality measures, they offer a more complete inference about the overall quality and effectiveness of the IRW system. River flow rates reflect the river's capacity as a viable transport channel, while centrality measures indicate how strategically a river port is positioned within the network.
                   </p>
-                  <br><br><img src="img\background1_freightVol.png" style="width:70%;"></td>
+                  <br><br><img src="img\background1_freightVol.png" style="width:80%;"></td>
               </tr>
               <tr>
                 <td>Hydrological Landscape</td>
@@ -59,7 +59,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Setup Accordion Section -->
     <div class="accordion">
       <div class="accordion-item">
@@ -98,8 +98,8 @@
                       <li>Seasonal variation in wet vs. dry seasons</li>
                       <li>Desiccated rivers aren't useful</li>
                       <li>Using published hydrological data, Spatial Autocorrelation, Kriging, and IDW (Inverse Distance Weighting)<br><br><em>Spatial Autocorrelation shows the clustering of land features that can cause rivers in the area having similar flow rates</em><br>
-  <em>Kriging and IDW are spatial interpolation techniques used to estimate values in areas without direct measurement.</em><br><br><em>Where spatial autocorrelation shows similarities, kriging is used to estimate flowrates tracking the variations in terrain and flow.</em><br><em>Otherwise, using IDW assumes a gradual decline in influence over distance</em>
-</li>
+                        <em>Kriging and IDW are spatial interpolation techniques used to estimate values in areas without direct measurement.</em><br><br><em>Where spatial autocorrelation shows similarities, kriging is used to estimate flowrates tracking the variations in terrain and flow.</em><br><em>Otherwise, using IDW assumes a gradual decline in influence over distance</em>
+                      </li>
                     </ul>
                     Node (port) degree centrality: 
                     <ul>
@@ -151,7 +151,55 @@
         </div> <!-- accordion content -->
       </div> <!-- accordion item --->
     </div>
-    
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Reading River Port Patterns
+        </button>
+        <div class="accordion-content">
+          <div class="content">
+            <h3>Overview</h3>
+            <p>River ports in Vietnam cluster around Ho Chi Minh City in the south and the Red River Delta near Ha Noi in the north. These clusters correspond with major economic zones and transport needs.</p>
+          </div>
+
+          <div class="content">
+            <h3>Centrality Metrics Quick Reference</h3>
+            <ul>
+              <li>Degree Centrality – Immediate connectivity: how many direct links a node has.</li>
+              <li>Betweenness Centrality – Flow control: how often a node lies on the shortest paths between others.</li>
+              <li>Closeness Centrality – Access efficiency: how quickly a node can reach all others in the network.</li>
+            </ul>
+          </div>
+
+          <div class="content">
+            <h3>High-Centrality Clusters in North and South</h3>
+
+            <p>Transport Demand Drives Clustering</p>
+            <ul>
+              <li>In the Mekong Delta, 93% of paddy is transported via inland rivers. In the north, farmers depend on seasonal transport to support rotating rice and vegetable production cycles.</li>
+            </ul>
+
+            <p>Degree Centrality Reflects Economic Hubs</p>
+            <ul>
+              <li>High-degree nodes gather around Ho Chi Minh City and Ha Noi, highlighting dense connectivity needs. Central highland regions, with low population and elevation challenges, exhibit fewer connections.</li>
+            </ul>
+
+            <p>Betweenness Reveals Strategic Bottlenecks</p>
+            <ul>
+              <li>Southern clusters are dense but may mask true chokepoints. Northern ports on major river axes show high betweenness—failures here could fragment national transport.</li>
+            </ul>
+
+            <p>Closeness Signals Logistical Cores</p>
+            <ul>
+              <li>High closeness values in the southeast and north hint at regions that can efficiently access the rest of the network—potential hubs for coordination and resilience.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- Data sources -->
     <div class="accordion">      
       <div class="accordion-item">
@@ -186,7 +234,8 @@
         </div>
       </div>
     </div>
-    
+
+
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         // Select all the accordion buttons
