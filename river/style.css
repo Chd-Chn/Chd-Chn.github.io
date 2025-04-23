@@ -1,0 +1,168 @@
+/* Avatar next to title */
+.avatar {
+  height: 5em;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+/*intro box*/
+.content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Step Description */
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 15px 0;
+    color: #555;
+}
+
+/* General Styles for the Accordion */
+.accordion {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for Accordion Item */
+.accordion-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Accordion Button (Header) Styles */
+.accordion-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Change color on hover */
+.accordion-button:hover {
+    background-color: #0056b3;
+}
+
+/* Icon for Expand/Collapse (using Unicode for + and -) */
+.accordion-button::after {
+    content: "+";
+    font-size: 18px;
+    color: white;
+    transition: transform 0.3s;
+}
+
+/* Rotate the icon when expanded */
+.accordion-button[aria-expanded="true"]::after {
+    content: "-";
+    transform: rotate(180deg);
+}
+
+/* Accordion Content Styles (Hidden by default) */
+.accordion-content {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    display: none;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Show content when accordion is expanded */
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+/* Active Styles (When the item is expanded) */
+.accordion-item.active .accordion-button {
+    background-color: #0056b3;
+}
+
+/*--------------------------------*/
+
+/* Keep layout consistent with the accordion */
+.table-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Simple, clean table styling */
+.network-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.network-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.network-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+}
+
+.network-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+/* Updated styles for the measurement methods table */
+
+.network-table thead th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+}
+
+.network-table tbody tr {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+}
+
+.network-table tbody tr:hover {
+    background-color: #f1f8ff;
+}
+
+/* Optional: Subtle vertical dividers using box-shadow illusion */
+.network-table td + td {
+    box-shadow: -1px 0 0 #eee inset;
+}

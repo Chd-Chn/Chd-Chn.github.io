@@ -1,0 +1,128 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+.header {
+    background-color: #007bff;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.header img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.header h1 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+
+/* Main Content */
+.content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Step Description */
+.step-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 15px 0;
+    color: #555;
+}
+
+/* Accordion Styles */
+.accordion {
+    margin-top: 20px;
+}
+
+.accordion-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.accordion-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    box-sizing: border-box; /* Ensure it fills the available width */
+}
+
+/* Change color on hover */
+.accordion-button:hover {
+    background-color: #0056b3;
+}
+
+/* Icon for Expand/Collapse */
+.accordion-button::after {
+    content: "+";
+    font-size: 18px;
+    color: white;
+    transition: transform 0.3s;
+}
+
+/* Rotate icon when expanded */
+.accordion-button[aria-expanded="true"]::after {
+    content: "-";
+    transform: rotate(180deg);
+}
+
+/* Accordion Content Styles */
+.accordion-content {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    display: none;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Show content when accordion is expanded */
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+/* Active Styles (When the item is expanded) */
+.accordion-item.active .accordion-button {
+    background-color: #0056b3;
+}
+
+/* Image Styling */
+.accordion-content img {
+    width: 100%;
+    border-radius: 5px;
+}
