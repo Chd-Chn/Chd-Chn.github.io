@@ -166,3 +166,13 @@
 .network-table td + td {
     box-shadow: -1px 0 0 #eee inset;
 }
+
+.callout {
+  padding: 1px 7px;
+  border-left: 16px solid;
+  background-color: #f9f9f9;
+  margin: 5px 0;
+  border-radius: 8px;
+}
+.callout-warning { border-color: #ffc107; background-color: #fff9e6; }
+.callout-info    { border-color: #17a2b8; background-color: #e7f5f9; }
