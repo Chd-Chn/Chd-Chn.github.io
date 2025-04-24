@@ -25,258 +25,254 @@
       </p>
     </div>
 
-    <!-- Context Accordion Section -->
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-button" aria-expanded="false">
-          Context
-        </button>
-        <div class="accordion-content">
-          <div class="content">
-            <p class="step-description">IRW assessment depends heavily on inference. Contextual knowledge holds equal, if not greater, importance than the supporting statistics involved. Here are two key requisite areas of knowledge for making high-quality inferences.</p>
+    <div class="content">
+      <p class="step-description">IRW assessment depends heavily on inference. Contextual knowledge holds equal, if not greater, importance than the supporting statistics involved. Here are two key requisite areas of knowledge for making high-quality inferences.</p>
 
-          </div>
-          <table class="network-table">
-            <thead>
-              <tr>
-                <th><strong>Topic</strong></th>
-                <th><strong>_</strong></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Transport Freight Volume</td>
-                <td>
-                  <p class="step-description">
-                    These freight volume charts provide the baseline understanding of inland river waterways (IRWs) throughput by province. When combined with river flow rates and river port centrality measures, they offer a more complete inference about the overall quality and effectiveness of the IRW system. River flow rates reflect the river's capacity as a viable transport channel, while centrality measures indicate how strategically a river port is positioned within the network.
-                  </p>
-                  <br><br><img src="img\background1_freightVol.png" style="width:80%;"></td>
-              </tr>
-              <tr>
-                <td>Hydrological Landscape</td>
-                <td>refer to the National water resources report for the period 2016-2021 from Data Sources</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Setup Accordion Section -->
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-button" aria-expanded="false">
-          Workflow
-        </button>
-        <div class="accordion-content">
-          <a href="workflow.html">9-step workflow</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-button" aria-expanded="false">
-          River Network Dimensions and Measurement Methods
-        </button>
-        <div class="accordion-content">
-          <div class="table-wrapper">
+      <!-- Context Accordion Section -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            Context
+          </button>
+          <div class="accordion-content">          
             <table class="network-table">
               <thead>
                 <tr>
-                  <th><strong>Dimension</strong></th>
-                  <th><strong>Definition</strong></th>
-                  <th><strong>How It Is Measured</strong></th>
+                  <th><strong>Topic</strong></th>
+                  <th><strong>_</strong></th>
                 </tr>
               </thead>
               <tbody>
-                <!-- Row 1: Convey -->
                 <tr>
-                  <td>Reliability</td>
-                  <td>Ability to convey goods consistently across seasons (wet/dry).</td>
+                  <td>Transport Freight Volume</td>
                   <td>
-                    Inference from river flow
-                    <ul>                       
-                      <li>Seasonal variation in wet vs. dry seasons</li>
-                      <li>Desiccated rivers aren't useful</li>
-                      <li>Using published hydrological data, Spatial Autocorrelation, Kriging, and IDW (Inverse Distance Weighting)<br><br><em>Spatial Autocorrelation shows the clustering of land features that can cause rivers in the area having similar flow rates</em><br>
-                        <em>Kriging and IDW are spatial interpolation techniques used to estimate values in areas without direct measurement.</em><br><br><em>Where spatial autocorrelation shows similarities, kriging is used to estimate flowrates tracking the variations in terrain and flow.</em><br><em>Otherwise, using IDW assumes a gradual decline in influence over distance</em>
-                      </li>
-                    </ul>
-                    Node (port) degree centrality: 
-                    <ul>
-                      <li>River port connectivity</li>
-                    </ul>
-                  </td>
+                    <p class="step-description">
+                      These freight volume charts provide the baseline understanding of inland river waterways (IRWs) throughput by province. When combined with river flow rates and river port centrality measures, they offer a more complete inference about the overall quality and effectiveness of the IRW system. River flow rates reflect the river's capacity as a viable transport channel, while centrality measures indicate how strategically a river port is positioned within the network.
+                    </p>
+                    <br><br><img src="img\background1_freightVol.png" style="width:80%;"></td>
                 </tr>
-                <!-- Row 2: Accessibility -->
                 <tr>
-                  <td>Accessibility</td>
-                  <td>The ease of reaching ports or transport routes, especially from urban/rural areas.</td>
-                  <td>
-                    Node (port) closeness and betweenness centrality
-                    <ul>
-                      <li>River ports are part of the inland transport network</li>
-                      <li>Goods are conveyed to their eventual destination through transfers between nodes or by switching to land or air networks</li>
-                      <li>Accessibility and Reachability increases the viability of a river port</li>
-                    </ul>
-                  </td>
-                </tr>
-                <!-- Row 4: Reachability (moved under Accessibility) -->
-                <tr>
-                  <td>Reachability</td>
-                  <td>The extent or range of the network, and whether remote areas are connected.</td>
-                  <td>
-                    <ul>
-                      <li>Closeness centrality and betweenness centrality provide insight into network range</li>
-                      <li>Increased reachability can extend the operational capacity of the network to remote regions</li>
-                    </ul>
-                  </td>
-                </tr>
-                <!-- Row 3: Throughput -->
-                <tr>
-                  <td>Throughput</td>
-                  <td>Capacity to move large volumes of goods.</td>
-                  <td>
-                    No concrete measure for a port’s throughput (especially inland ports)<br>
-                    Inferred through:
-                    <ul>                      
-                      <li>Degree centrality: Better-connected ports tend to have higher throughput</li>
-                      <li>Transport data (e.g., freight × distance)</li>
-                      <li>Desiccation during dry seasons</li>
-                    </ul>
-                  </td>
+                  <td>Hydrological Landscape</td>
+                  <td>refer to the National water resources report for the period 2016-2021 from Data Sources</td>
                 </tr>
               </tbody>
             </table>
-          </div> <!-- .table wrapper -->
-        </div> <!-- accordion content -->
-      </div> <!-- accordion item --->
-    </div>
+          </div> <!-- accordion content -->
+        </div> <!-- accordion item -->
+      </div>
 
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-button" aria-expanded="false">
-          Reading River Port Patterns
-        </button>
-        <div class="accordion-content">
-          <div class="content">
-            
-            <p>River ports in Vietnam cluster around Ho Chi Minh City in the south and the Red River Delta near Ha Noi in the north. These clusters correspond with major economic zones and transport needs.</p>
+    </div> <!-- content -->
+
+    <div class="content">
+      <div>
+        A <a href="workflow.html">9-step workflow</a> prepares the IRW data to generate those dimensions and measurements needed to assess the network. In turn, the river port patterns can be read, revealing the characteristics and quality of the IRW network.<br><br>
+      </div>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            River Network Dimensions and Measurement Methods
+          </button>
+          <div class="accordion-content">
+            <div class="table-wrapper">
+              <table class="network-table">
+                <thead>
+                  <tr>
+                    <th><strong>Dimension</strong></th>
+                    <th><strong>Definition</strong></th>
+                    <th><strong>How It Is Measured</strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Row 1: Convey -->
+                  <tr>
+                    <td>Reliability</td>
+                    <td>Ability to convey goods consistently across seasons (wet/dry).</td>
+                    <td>
+                      Inference from river flow
+                      <ul>                       
+                        <li>Seasonal variation in wet vs. dry seasons</li>
+                        <li>Desiccated rivers aren't useful</li>
+                        <li>Using published hydrological data, Spatial Autocorrelation, Kriging, and IDW (Inverse Distance Weighting)<br><br><em>Spatial Autocorrelation shows the clustering of land features that can cause rivers in the area having similar flow rates</em><br>
+                          <em>Kriging and IDW are spatial interpolation techniques used to estimate values in areas without direct measurement.</em><br><br><em>Where spatial autocorrelation shows similarities, kriging is used to estimate flowrates tracking the variations in terrain and flow.</em><br><em>Otherwise, using IDW assumes a gradual decline in influence over distance</em>
+                        </li>
+                      </ul>
+                      Node (port) degree centrality: 
+                      <ul>
+                        <li>River port connectivity</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <!-- Row 2: Accessibility -->
+                  <tr>
+                    <td>Accessibility</td>
+                    <td>The ease of reaching ports or transport routes, especially from urban/rural areas.</td>
+                    <td>
+                      Node (port) closeness and betweenness centrality
+                      <ul>
+                        <li>River ports are part of the inland transport network</li>
+                        <li>Goods are conveyed to their eventual destination through transfers between nodes or by switching to land or air networks</li>
+                        <li>Accessibility and Reachability increases the viability of a river port</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <!-- Row 4: Reachability (moved under Accessibility) -->
+                  <tr>
+                    <td>Reachability</td>
+                    <td>The extent or range of the network, and whether remote areas are connected.</td>
+                    <td>
+                      <ul>
+                        <li>Closeness centrality and betweenness centrality provide insight into network range</li>
+                        <li>Increased reachability can extend the operational capacity of the network to remote regions</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <!-- Row 3: Throughput -->
+                  <tr>
+                    <td>Throughput</td>
+                    <td>Capacity to move large volumes of goods.</td>
+                    <td>
+                      No concrete measure for a port’s throughput (especially inland ports)<br>
+                      Inferred through:
+                      <ul>                      
+                        <li>Degree centrality: Better-connected ports tend to have higher throughput</li>
+                        <li>Transport data (e.g., freight × distance)</li>
+                        <li>Desiccation during dry seasons</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div> <!-- .table wrapper -->
+          </div> <!-- accordion content -->
+        </div> <!-- accordion item --->
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            Reading River Port Patterns
+          </button>
+          <div class="accordion-content">
+            <div class="content">
+
+              <p>River ports in Vietnam cluster around Ho Chi Minh City in the south and the Red River Delta near Ha Noi in the north. These clusters correspond with major economic zones and transport needs.</p>
+            </div>
+
+            <div class="content">
+              <h3>Centrality Metrics Quick Reference</h3>
+              <ul>
+                <li>Degree Centrality – Immediate connectivity: how many direct links a node has.</li>
+                <li>Betweenness Centrality – Flow control: how often a node lies on the shortest paths between others.</li>
+                <li>Closeness Centrality – Access efficiency: how quickly a node can reach all others in the network.</li>
+              </ul>
+            </div>
+
+            <div class="content">
+              <h3>High-Centrality Clusters in North and South</h3>
+
+              <div class="callout callout-warning">
+                <p>Transport Demand Drives Clustering</p>
+              </div>
+              <p>In the Mekong Delta, 93% of paddy is transported via inland rivers. In the north, farmers depend on seasonal transport to support rotating rice and vegetable production cycles.</p>
+
+              <div class="callout callout-warning">
+                <p>Degree Centrality Reflects Economic Hubs</p>
+              </div>
+              <p>High-degree nodes gather around Ho Chi Minh City and Ha Noi, highlighting dense connectivity needs. Central highland regions, with low population and elevation challenges, exhibit fewer connections.</p>
+
+              <div class="callout callout-warning"> 
+                <p>Betweenness Reveals Strategic Bottlenecks</p>
+              </div>
+              <p>Southern clusters are dense but may mask true chokepoints. Northern ports on major river axes show high betweenness—failures here could fragment national transport.</p>
+
+              <div class="callout callout-warning">
+                <p>Closeness Signals Logistical Cores</p>
+              </div>
+              <p>High closeness values in the southeast and north hint at regions that can efficiently access the rest of the network—potential hubs for coordination and resilience.<p>
+            </div>
           </div>
+        </div>
+      </div>
+    </div> <!-- content div wrap workflow, methods, reading patterns-->   
 
-          <div class="content">
-            <h3>Centrality Metrics Quick Reference</h3>
-            <ul>
-              <li>Degree Centrality – Immediate connectivity: how many direct links a node has.</li>
-              <li>Betweenness Centrality – Flow control: how often a node lies on the shortest paths between others.</li>
-              <li>Closeness Centrality – Access efficiency: how quickly a node can reach all others in the network.</li>
+    <div class="content">
+      <div>
+        <H3>Other info</H3>
+        <p>
+          The <strong>River Flow Direction</strong> tool in QGIS uses elevation data from a Digital Elevation Model to map how water flows across terrain. It shows the downhill direction of flow from each point, helping identify natural drainage paths and potential river channels.
+        </p>
+
+        <p>
+          The results corroborate the findings of other inland river network metrics by grounding them in physical geography. It validates where reliable flow supports transport, and, when considered alongside centrality and throughput data, helps explain which ports are viable year-round and which are limited by seasonal desiccation.
+        </p>
+      </div>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            QGIS: River flow direction analysis
+          </button>
+
+          <div class="accordion-content">
+
+            <div class="content">
+              <div class="callout callout-warning">
+                <h3>Major rivers in northern provinces</h3>
+              </div>
+              <br><img src="img\Others3.png" style="width:80%;">
+            </div>
+
+            <div class="content">
+              <div class="callout callout-warning">
+                <h3>Major rivers in central provinces</h3>
+              </div>
+              <br><img src="img\Others2.png" style="width:80%;">            
+            </div>
+
+            <div class="content">
+              <div class="callout callout-warning">
+                <h3>Major rivers in southern provinces</h3>
+              </div>
+              <br><img src="img\Others1.png" style="width:80%;">            
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data sources -->
+      <div class="accordion">      
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">Data sources</button>
+          <div class="accordion-content">
+            <ul class="step-description">
+              <li>[A3.1] T. H. Dang et al., “Long-term monitoring (1960–2008) of the river-sediment transport in the Red River Watershed (Vietnam): Temporal variability and dam-reservoir impact,” *The Science of the Total Environment*, vol. 408, no. 20, pp. 4654–4664, 2010.</li>
+
+              <li>[A3.2] L. H. Linh et al., “Molecular Breeding to Improve Salt Tolerance of Rice (Oryza sativa L.) in the Red River Delta of Vietnam,” *International Journal of Plant Genomics*, vol. 2012, pp. 949038–9, 2012.</li>
+
+              <li>[A3.3] X.-N. Huo et al., “Combining geostatistics with Moran’s I analysis for mapping soil heavy metals in Beijing, China,” *International Journal of Environmental Research and Public Health*, vol. 9, no. 3, pp. 995–1017, 2012. doi:10.3390/ijerph9030995</li>
+
+              <li>[A3.4] Rob Cramb, “The Evolution of Rice Farming in the Lower Mekong Basin,” in *White Gold: The Commercialisation of Rice Farming in the Lower Mekong Basin*, Springer Nature Singapore, 2020, pp. 3–35.</li>
+
+              <li>[A3.5] D. The Anh et al., “The domestic rice value chain in the Mekong Delta,” in *White Gold: The Commercialisation of Rice Farming in the Lower Mekong Basin*, Springer Nature Singapore, 2020, pp. 375–395.</li>
+
+              <li>[A3.6] Food and Agriculture Organization of the United Nations, “Chapter 2: Food Security: concepts and measurement,” *Trade Reforms and Food Security: Conceptualizing the Linkages*, <a href="https://www.fao.org/3/y4671e/y4671e00.htm#Contents" target="_blank">link</a> (accessed Jan. 16, 2024).</li>
+
+              <li>[A3.7] P. J. Batt, “Examining the performance of the supply chain for potatoes in the Red River Delta using a pluralistic approach,” *Supply Chain Management*, vol. 8, no. 5, pp. 442–454, 2003.</li>
+
+              <li>[A3.8] P. T. T. Huong et al., “Vegetable production in the Red River Delta of Vietnam. II. Profitability, labour requirement and pesticide use,” *NJAS - Wageningen Journal of Life Sciences*, vol. 67, no. 1, pp. 37–46, 2013.</li>
+
+              <li>[A3.9] V. T. Pham, “Optimizing Logistics System to Serve Vietnam’s Rice Export Strategy,” *Research in World Economy*, vol. 11, no. 3, p. 231, 2020. doi:10.5430/rwe.v11n3p231</li>
+
+              <li>[A3.10] A. L. Kooijman-van Dijk and J. Clancy, “Impacts of Electricity Access to Rural Enterprises in Bolivia, Tanzania and Vietnam,” *Energy for Sustainable Development*, vol. 14, no. 1, pp. 14–21, 2010.</li>
+
+              <li>[A3.11] LuatVietnam, “Infrastructure of inland waterways for the 2021–2030 Period,” *LuatVietnam*, <a href="https://english.luatvietnam.vn/legal-updates/planning-for-infrastructure-of-inland-waterways-for-the-2021-2030-period-892-91969-article.html" target="_blank">link</a> (accessed Mar. 19, 2024).</li>
+
+              <li>[A3.12] D. A. Hoang et al., “Sustainable Development of Inland Waterways Transport in Vietnam: Strengthening the Regulatory, Institutional and Funding Frameworks,” *World Bank Group*, Washington, D.C., 2019. <a href="http://documents.worldbank.org/curated/en/214851554188572807/Sustainable-Development-of-Inland-Waterways-Transport-in-Vietnam-Strengthening-the-Regulatory-Institutional-and-Funding-Frameworks" target="_blank">link</a></li>
+              <li>[A3.13] National Center for Water Resources Planning and Investigation (NAWAPI), “National Water Resources Report for the Period 2016–2021,” Vietnam Ministry of Natural Resources and Environment. <a href="http://vnmha.gov.vn/tin-tuc-tai-nguyen-nuoc-va-moi-truong-114/bao-cao-tai-nguyen-nuoc-quoc-gia-giai-doan-2016-2021-12651.html" target="_blank">link</a> (accessed Dec. 21, 2023).</li>
             </ul>
           </div>
-
-          <div class="content">
-            <h3>High-Centrality Clusters in North and South</h3>
-
-            <div class="callout callout-warning">
-              <p>Transport Demand Drives Clustering</p>
-            </div>
-            <p>In the Mekong Delta, 93% of paddy is transported via inland rivers. In the north, farmers depend on seasonal transport to support rotating rice and vegetable production cycles.</p>
-            
-            <div class="callout callout-warning">
-              <p>Degree Centrality Reflects Economic Hubs</p>
-            </div>
-            <p>High-degree nodes gather around Ho Chi Minh City and Ha Noi, highlighting dense connectivity needs. Central highland regions, with low population and elevation challenges, exhibit fewer connections.</p>
-
-            <div class="callout callout-warning"> 
-              <p>Betweenness Reveals Strategic Bottlenecks</p>
-            </div>
-            <p>Southern clusters are dense but may mask true chokepoints. Northern ports on major river axes show high betweenness—failures here could fragment national transport.</p>
-
-            <div class="callout callout-warning">
-              <p>Closeness Signals Logistical Cores</p>
-            </div>
-            <p>High closeness values in the southeast and north hint at regions that can efficiently access the rest of the network—potential hubs for coordination and resilience.<p>
-          </div>
         </div>
       </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-button" aria-expanded="false">
-          QGIS: River flow direction analysis
-        </button>
-
-        <div class="accordion-content">
-
-          <p>
-            The <strong>River Flow Direction</strong> tool in QGIS uses elevation data from a Digital Elevation Model to map how water flows across terrain. It shows the downhill direction of flow from each point, helping identify natural drainage paths and potential river channels.
-          </p>
-
-          <p>
-            The results corroborate the findings of other inland river network metrics by grounding them in physical geography. It validates where reliable flow supports transport, and, when considered alongside centrality and throughput data, helps explain which ports are viable year-round and which are limited by seasonal desiccation.
-          </p>
-
-
-          <div class="content">
-            <div class="callout callout-warning">
-              <h3>Major rivers in northern provinces</h3>
-            </div>
-            <br><img src="img\Others3.png" style="width:80%;">
-          </div>
-
-          <div class="content">
-            <div class="callout callout-warning">
-              <h3>Major rivers in central provinces</h3>
-            </div>
-            <br><img src="img\Others2.png" style="width:80%;">            
-          </div>
-
-          <div class="content">
-            <div class="callout callout-warning">
-              <h3>Major rivers in southern provinces</h3>
-            </div>
-            <br><img src="img\Others1.png" style="width:80%;">            
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Data sources -->
-    <div class="accordion">      
-      <div class="accordion-item">
-        <button class="accordion-button" aria-expanded="false">Data sources</button>
-        <div class="accordion-content">
-          <ul class="step-description">
-            <li>[A3.1] T. H. Dang et al., “Long-term monitoring (1960–2008) of the river-sediment transport in the Red River Watershed (Vietnam): Temporal variability and dam-reservoir impact,” *The Science of the Total Environment*, vol. 408, no. 20, pp. 4654–4664, 2010.</li>
-
-            <li>[A3.2] L. H. Linh et al., “Molecular Breeding to Improve Salt Tolerance of Rice (Oryza sativa L.) in the Red River Delta of Vietnam,” *International Journal of Plant Genomics*, vol. 2012, pp. 949038–9, 2012.</li>
-
-            <li>[A3.3] X.-N. Huo et al., “Combining geostatistics with Moran’s I analysis for mapping soil heavy metals in Beijing, China,” *International Journal of Environmental Research and Public Health*, vol. 9, no. 3, pp. 995–1017, 2012. doi:10.3390/ijerph9030995</li>
-
-            <li>[A3.4] Rob Cramb, “The Evolution of Rice Farming in the Lower Mekong Basin,” in *White Gold: The Commercialisation of Rice Farming in the Lower Mekong Basin*, Springer Nature Singapore, 2020, pp. 3–35.</li>
-
-            <li>[A3.5] D. The Anh et al., “The domestic rice value chain in the Mekong Delta,” in *White Gold: The Commercialisation of Rice Farming in the Lower Mekong Basin*, Springer Nature Singapore, 2020, pp. 375–395.</li>
-
-            <li>[A3.6] Food and Agriculture Organization of the United Nations, “Chapter 2: Food Security: concepts and measurement,” *Trade Reforms and Food Security: Conceptualizing the Linkages*, <a href="https://www.fao.org/3/y4671e/y4671e00.htm#Contents" target="_blank">link</a> (accessed Jan. 16, 2024).</li>
-
-            <li>[A3.7] P. J. Batt, “Examining the performance of the supply chain for potatoes in the Red River Delta using a pluralistic approach,” *Supply Chain Management*, vol. 8, no. 5, pp. 442–454, 2003.</li>
-
-            <li>[A3.8] P. T. T. Huong et al., “Vegetable production in the Red River Delta of Vietnam. II. Profitability, labour requirement and pesticide use,” *NJAS - Wageningen Journal of Life Sciences*, vol. 67, no. 1, pp. 37–46, 2013.</li>
-
-            <li>[A3.9] V. T. Pham, “Optimizing Logistics System to Serve Vietnam’s Rice Export Strategy,” *Research in World Economy*, vol. 11, no. 3, p. 231, 2020. doi:10.5430/rwe.v11n3p231</li>
-
-            <li>[A3.10] A. L. Kooijman-van Dijk and J. Clancy, “Impacts of Electricity Access to Rural Enterprises in Bolivia, Tanzania and Vietnam,” *Energy for Sustainable Development*, vol. 14, no. 1, pp. 14–21, 2010.</li>
-
-            <li>[A3.11] LuatVietnam, “Infrastructure of inland waterways for the 2021–2030 Period,” *LuatVietnam*, <a href="https://english.luatvietnam.vn/legal-updates/planning-for-infrastructure-of-inland-waterways-for-the-2021-2030-period-892-91969-article.html" target="_blank">link</a> (accessed Mar. 19, 2024).</li>
-
-            <li>[A3.12] D. A. Hoang et al., “Sustainable Development of Inland Waterways Transport in Vietnam: Strengthening the Regulatory, Institutional and Funding Frameworks,” *World Bank Group*, Washington, D.C., 2019. <a href="http://documents.worldbank.org/curated/en/214851554188572807/Sustainable-Development-of-Inland-Waterways-Transport-in-Vietnam-Strengthening-the-Regulatory-Institutional-and-Funding-Frameworks" target="_blank">link</a></li>
-            <li>[A3.13] National Center for Water Resources Planning and Investigation (NAWAPI), “National Water Resources Report for the Period 2016–2021,” Vietnam Ministry of Natural Resources and Environment. <a href="http://vnmha.gov.vn/tin-tuc-tai-nguyen-nuoc-va-moi-truong-114/bao-cao-tai-nguyen-nuoc-quoc-gia-giai-doan-2016-2021-12651.html" target="_blank">link</a> (accessed Dec. 21, 2023).</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+    </div> <!-- content wrapping QGIS, Data Source-->
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
