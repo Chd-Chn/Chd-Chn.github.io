@@ -1,0 +1,214 @@
+/* Avatar next to title */
+.avatar {
+  height: 5em;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+/* Header Styling */
+.header {
+    background-color: #424A59;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.header h1 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.header-banner {
+  background-color: #424A59;
+  padding: 0.2px 20px; /* reduced top/bottom padding */
+  border-radius: 10px;
+  color: white;
+  text-align: left; /* Change from center to left */
+  white-space: normal; /* Allow text wrapping */
+}
+
+.header h2 {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.6rem;
+  margin: 0; /* Remove default top and bottom margin */
+  padding: 0; /* Just in case */
+}
+
+
+.step-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: normal; /* Ensure wrapping */
+  margin-top: 10px;
+}
+
+
+/*intro box*/
+.content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Step Description */
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 15px 0;
+    color: #555;
+}
+
+/* General Styles for the Accordion */
+.accordion {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2px;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for Accordion Item */
+.accordion-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Accordion Button (Header) Styles */
+.accordion-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D99982;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+/* Change color on hover */
+.accordion-button:hover {
+    background-color: #F2CAA7;
+    color: #424A59;
+}
+
+/* Icon for Expand/Collapse (using Unicode for + and -) */
+.accordion-button::after {
+    content: "+";
+    font-size: 18px;
+    color: white;    
+    transition: transform 0.3s;
+}
+
+/* Rotate the icon when expanded */
+.accordion-button[aria-expanded="true"]::after {
+    content: "-";
+    transform: rotate(180deg);
+}
+
+/* Accordion Content Styles (Hidden by default) */
+.accordion-content {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    display: none;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Show content when accordion is expanded */
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+/* Active Styles (When the item is expanded) */
+.accordion-item.active .accordion-button {
+    background-color: #F2C36B;
+    color: #424A59;
+}
+
+/*--------------------------------*/
+
+/* Keep layout consistent with the accordion */
+.table-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Simple, clean table styling */
+.network-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.network-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.network-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+}
+
+.network-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+/* Updated styles for the measurement methods table */
+
+.network-table thead th {
+    background-color: #424A59;
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+}
+
+.network-table tbody tr {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+}
+
+.network-table tbody tr:hover {
+    background-color: #f1f8ff;
+}
+
+/* Optional: Subtle vertical dividers using box-shadow illusion */
+.network-table td + td {
+    box-shadow: -1px 0 0 #eee inset;
+}
+
+.callout {
+  padding: 1px 7px;
+  border-left: 16px solid;
+  background-color: #f9f9f9;
+  margin: 5px 0;
+  border-radius: 8px;
+}
+.callout-warning { border-color: #D99982; background-color: #424A59; color: white; }
+.callout-info    { border-color: #17a2b8; background-color: #e7f5f9; }

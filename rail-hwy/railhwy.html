@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rail and Highway Network Analysis</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="header">
+      <img src="../img/Avatar.gif" alt="avatar" class="avatar">
+      <h1>Rail and Highway Network Analysis</h1>
+    </div>
+
+    <div class="content">
+      <div>
+
+        <p>This study provides an assessment of Viet Nam’s rail and highway networks as food transport systems, focusing on three key criteria: <strong>reliability</strong>, <strong>accessibility</strong>, and <strong>reachability</strong>.</p>
+
+        <h3>Rail Network</h3>
+        <p>The rail network consists of a single North-South line running from Lào Cai in the north to Ho Chi Minh City in the south. This line primarily hugs the coastline, constrained by high elevation terrain, and doesn’t extend far inland. As a result, the rail network struggles with reliability due to a lack of redundancy and ranks poorly in accessibility and reachability. Given the simplicity of the network, QGIS was sufficient for most of the analysis.</p>
+
+        <h3>Highway Network</h3>
+        <p>The national highway network traverses the country from north to south, with secondary highways branching out to provincial capitals and administrative units. This expansive network is more complex and was analyzed using Python and NetworkX. The highway network performs well in all three criteria, particularly in accessibility and reachability, due to its extensive spread of nodes and central hubs.</p>
+
+        <p>When viewed as part of a larger transportation system, which includes the Inland River Waterways (IRW), the rail and highway networks complement each other. The highway network helps alleviate the limitations of the other two networks but is itself over-burdened. This analysis serves as a foundation for future logistical planning and optimization strategies.</p>
+      </div>
+    </div><!-- content -->
+
+    <div class="content">
+      <div class="header-banner">
+        <h2>Context</h2>
+      </div>
+      <p class="step-description">While the measurement metrics for the rail and highway networks rely less on inference, contextual knowledge remains crucial for interpreting the results. Below are key passenger(mil.person.km) and freight(mil.tons.km) volume data to support accurate interpretations.</p>
+
+      <!-- Context Accordion Section -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            National level
+          </button>
+          <div class="accordion-content">  
+            <img src="img\context_PsngrFrhtVolNational.png" style="width:80%;">     
+          </div> <!-- accordion content -->
+        </div> <!-- accordion item -->
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            Provincial level
+          </button>
+          <div class="accordion-content">  
+            <img src="img\context_PsngrFrhtVolProvincial.png" style="width:80%;">     
+          </div> <!-- accordion content -->
+        </div> <!-- accordion item -->
+      </div>
+    </div> <!-- content -->
+
+
+    <div class="content"> 
+      <div class="header-banner">
+        <h2>Preparing to plot</h2>
+      </div>
+      <br>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            Steps
+          </button>
+          <div class="accordion-content">                        
+
+            <div class="callout callout-warning">
+              <p>1. Base Maps</p>
+            </div>
+            <p>Base maps are sourced from <a href="https://opendevelopmentmekong.net" target="_blank">Open Development Mekong</a>.</p>            
+
+            <div class="callout callout-warning">
+              <p>2. Train Stations (Point) KML</p>
+            </div>
+            <p>
+            <ul>
+              <li>Train station lists are obtained from official Vietnamese train operator websites.</li>
+              <li>Coordinates for each station are gathered using Google Maps.</li>
+              <li>Train station points are snapped to the rail lines for accurate spatial alignment in the network model.</li>
+              <li>KML files are created from the point data to represent station locations.</li>
+            </ul>              
+            </p>            
+
+          <div class="callout callout-warning">
+            <p>3. Converting Highway Network into a Graph</p>
+          </div>
+          <p>          
+          <ul>
+            <li>The highway network is converted into a graph to better represent its structure and characteristics for analysis.</li>
+            <li>Nodes are defined at highway start and end points, as well as at intersections (or junctions), which increase the number of nodes available for analysis.</li>
+            <li>Edges represent the segments of the highway between nodes and are weighted by the distance between them.</li>
+            <li>Node-edge pairs are stored in a CSV format and loaded into NetworkX for further analysis and graph-based computations in Python.</li>
+          </ul>          
+          </p>            
+        <img src="img\hwy_prepNW.png" style="width:80%;">
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item -->
+    </div> <!-- accordion -->
+  </div> <!-- content -->
+
+<div class="content"> 
+  <div class="header-banner">
+    <h2>Reading rail patterns</h2>
+  </div>
+
+  <p>Understanding rail patterns involves examining the network's distribution, the coverage in key regions, and the geographic constraints that impact accessibility. This analysis provides a clearer picture of the system’s strengths, such as high coverage in capital cities, and its weaknesses, including the significant gaps in southern Vietnam and other underserved areas. By assessing these patterns, we can identify opportunities for enhancing network reliability, expanding service, and aligning infrastructure with regional demand.
+  </p>
+  <br>
+  <div class="accordion">
+
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Rail network statistics: Accessibility and Coverage
+      </button>
+      <div class="accordion-content">
+        <div class="rail-network">
+          Key insights into the accessibility and coverage of Vietnam's rail network reveal a distribution of services that varies significantly across regions. This analysis identifies areas where the network performs well and highlights regions that require improvement, offering valuable input for optimizing rail network operations.
+          <br>
+          <div class="callout callout-warning">
+            <p>1. Capital City Coverage</p>
+          </div>
+          <p>Capital cities, serving as administrative centers, demonstrate high rail coverage, ideally reaching 100%.</p>
+          <div class="callout callout-warning">
+            <p>2. Regional Gaps</p>
+          </div>
+          <p>The Mekong River Delta lacks rail service due to its paddy field terrain, making rail development impractical.</p>
+          <div class="callout callout-warning">
+            <p>3. Top Regions for Rail Access</p>
+          </div>
+          <p>The North Central and Central Coastal (73%) and Red River Delta (53%) provinces exhibit the highest capital city coverage.</p>
+          <div class="callout callout-warning">
+            <p>4. Geographic and Demographic Factors</p>
+          </div>
+          <p>Terrain elevation and population density, particularly in the eastern coastline and around Ha Noi, significantly influence rail network development.</p>
+          <div class="callout callout-warning">
+            <p>5. Population-Density Correlation</p>
+          </div>
+          <p>Rail lines align with densely populated areas, like Ha Noi and Ho Chi Minh City, enhancing the network’s accessibility and reliability.</p>
+        </div>
+        <br>
+        <img src="img\rail_stats.png" style="width:80%;">
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item -->
+
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Rail layout: reliability
+      </button>
+      <div class="accordion-content">
+        The reliability of Vietnam's rail network is critically impacted by its layout, with several vulnerabilities posing significant risks to its overall performance. Identifying key problem areas and examining contingency strategies helps to highlight the network's limitations and areas where strategic improvements could enhance resilience and efficiency.
+        <br>
+        <div class="callout callout-warning">
+          <p>1. Vulnerabilities and Contingencies</p>
+        </div>
+        <p>
+          The railway layout shows high vulnerability in central Vietnam. The central rail corridor is a single point of failure—any disruptions here could be catastrophic. Notably, highway networks run parallel to these vulnerable railway segments, suggesting that transportation redundancy is built into the <strong>road network</strong>, rather than the rail infrastructure.
+        </p>
+        <p>
+          Similarly, northern rail lines parallel rivers and extend toward the eastern coast. These too rely on highway networks for contingency. In contrast, the railway terminates at <strong>Ho Chi Minh City</strong>, leaving the southern region disconnected from rail service entirely.
+        </p>
+        <p>
+          The rail system lacks <strong>built-in redundancy</strong>, relying instead on the road network for fallback during service disruptions.
+        </p>
+        <div class="callout callout-warning">
+          <p>2. Regional Accessibility and Infrastructure Gaps</p>
+        </div>
+        <p>
+          Geographic constraints and network layout contribute to <strong>uneven regional accessibility</strong>.
+        </p>
+        <p>
+          Rising freight traffic distances, despite reduced tonnage, suggest a <strong>misalignment between demand and infrastructure capability</strong>.
+        </p>
+        <p>
+          There is a clear <strong>opportunity for investment</strong> in southern Vietnam, where rail service is absent.
+        </p>
+        <br>
+        <img src="img\rail_nw.png" style="width:80%;">
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item -->
+
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Plot: northern provinces
+      </button>
+      <div class="accordion-content">
+        <br>
+        <img src="img\rail_plotNorth.png" style="width:80%;">
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item -->
+
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Plot: central provinces
+      </button>
+      <div class="accordion-content">
+        <br> 
+        <img src="img\rail_plotCentral.png" style="width:80%;">
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item -->
+
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Plot: southern provinces
+      </button>
+      <div class="accordion-content">
+        <br> 
+        <img src="img\rail_plotSouth.png" style="width:80%;">
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item -->
+
+  </div> <!-- accordion -->
+</div> <!-- content -->
+
+<div class="content"> 
+  <div class="header-banner">
+    <h2>Reading highway patterns</h2>
+  </div>
+
+  <div class="content"> 
+    <h3>General view of the highway network</h3>
+    <p>A comprehensive visual analysis of the highway network is conducted using networkX, shedding light on its structure and connectivity. Key segments of the highway network are plotted to reveal both the strengths and potential vulnerabilities of the system. Centrality measures, including betweenness, closeness, and eigenvector centrality, are employed to assess the overall performance and efficiency of the network. To streamline the analysis, a simplified regional classification—Northern, Central, and Southern—reduces complexity while preserving the core insights. This method supports both global and local analyses, pinpointing critical nodes and connections, and identifying areas that may benefit from further optimization.</p>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Plot: northern provinces
+        </button>
+        <div class="accordion-content">
+          <br>
+          <img src="img\hwy_plotNorth.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Plot: central provinces
+        </button>
+        <div class="accordion-content">
+          <br> 
+          <img src="img\hwy_plotCentral.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Plot: southern provinces
+        </button>
+        <div class="accordion-content">
+          <br> 
+          <img src="img\hwy_plotSouth.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+    </div> <!-- accordion -->
+  </div> <!-- content: gen view-->
+
+  <div class="content">
+    <h3>Highway network as a graph</h3>
+    <div class="accordion">  
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Highway network statistics
+        </button>
+        <div class="accordion-content">
+          <p>
+            The statistics presented here provide a high-level overview of the highway network, revealing its connectivity and structure. With 590 out of 766 nodes comprising the largest connected component, the network demonstrates a high level of connectivity and resilience. A key takeaway from this analysis is the identification of isolated edges, especially along the eastern coastline, which play a crucial role in the overall connectivity. These insights, visualized through carefully plotted figures, allow for a deeper understanding of how the network functions and where improvements can be made.
+          </p>
+          <br>
+          <img src="img\hwy_graphStat.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Closeness Centrality
+        </button>
+        <div class="accordion-content">
+          something
+          <br> 
+          <img src="img\hwy_Cclose.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Degree Centrality
+        </button>
+        <div class="accordion-content">
+
+          something
+          <br> 
+          <img src="img\hwy_Cdegree.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Graph: diameter, cut nodes and edges
+        </button>
+        <div class="accordion-content">
+
+          <p><strong>In transportation and infrastructure analysis, diameter</strong> is a key metric that reveals the longest shortest path between any two nodes in a network, highlighting the network's reach and potential vulnerabilities.</p>
+
+          <p>For instance, the largest component has a diameter of <strong>85</strong>, indicating significant travel distances. However, this wide reach also exposes the network to risks. Critical nodes and <strong>cut edges</strong>—connections whose removal would fragment the network—are essential in identifying weak points.</p>
+
+          <p>These vulnerable areas, particularly near the <strong>eastern, western, and central regions</strong>, underscore the potential for major disruptions if key components fail. This static graph analysis identifies structural vulnerabilities and potential bottlenecks under normal conditions. While useful for resilience planning, dynamic disruptions (e.g., floods or demand surges) would require temporal simulations.</p>
+
+          <p>Understanding <strong>diameter</strong> and <strong>cut edges</strong> enables smart, cost-effective infrastructure planning, reducing risks and optimizing the flow of traffic across large systems.</p>
+          <br> 
+          <img src="img\hwy_graphDia.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Graph: Clustering Coefficient
+        </button>
+        <div class="accordion-content">
+
+          <p>The clustering coefficient quantifies the degree to which nodes in a network tend to cluster together, providing insights into local connectivity patterns.</p>
+
+          <p>This analysis challenges conventional wisdom by revealing that the highest clustering values appear outside major cities like <strong>Hanoi</strong> and <strong>Ho Chi Minh City</strong>, suggesting that decentralized economic hubs are key to the network's efficiency.</p>
+
+          <p>This has practical implications for optimizing supply chains, particularly in scenarios like food distribution or emergency logistics, where decentralization can enhance resilience and responsiveness.</p>
+
+          <p>Leveraging the <strong>clustering coefficient</strong> uncovers valuable patterns within the network, leading to smarter, more adaptable systems. This insight is essential for optimizing logistics, network design, and strategic planning, highlighting opportunities for efficiency and resilience.</p>
+          <br> 
+          <img src="img\hwy_graphClusCoeff.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <br>
+      <h4>Global vs. Local Centrality: A Dual Perspective</h4>
+      <p>Understanding both <strong>global</strong> and <strong>local centrality</strong> in a network is crucial for identifying key nodes that drive overall system performance.</p>
+
+      <p><strong>Global centrality</strong> reveals nodes with the greatest influence across the entire network, essential for strategic decision-making and optimizing large-scale interactions.</p>
+
+      <p>On the other hand, <strong>local centrality</strong> focuses on the role of nodes within their immediate neighborhoods, offering insights into localized efficiencies and vulnerabilities.</p>
+
+      <p>The network is evaluated using three centrality metrics: betweenness, closeness, and degree. Each is computed at both global and regional (local) levels, revealing how centrality shifts when the network is partitioned into northern, central, and southern zones.</p>
+
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Global Betweeness Centrality
+        </button>
+        <div class="accordion-content">
+
+          <p><strong>Betweenness Centrality</strong> measures how often a node lies on the shortest paths between different pairs of nodes. Nodes with high betweenness centrality can act as bridges between two groups, facilitating communication and traffic flow.However, when these nodes are overloaded, they can become bottlenecks. Unlike cut vertices, which can fragment a network upon failure, nodes with high betweenness centrality do not necessarily break apart components due to the presence of redundant paths</p>
+
+          <p>This concept is reinforced when combined with clustering coefficients, as both metrics highlight the strengths and weaknesses of network nodes. For instance, global betweenness centrality identifies nodes with significant bridging roles, capable of connecting large portions of the network. These nodes may play a critical role in maintaining network efficiency but could also become chokepoints if not managed carefully.</p>
+          <br> 
+          <img src="img\hwy_graphGbet.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Local Betweeness Centrality
+        </button>
+        <div class="accordion-content">
+
+          <p>When comparing global to local betweenness, it becomes clear that nodes that are less significant on a global scale gain importance when the analysis is confined to a smaller, local area. Nodes that may not show up as major global hubs can become crucial bridges or bottlenecks in their specific region.</p>
+
+          <p>This local view highlights the nodes that are critical to regional performance, where bridge nodes with lesser global significance become prominent in the local context. It is also evident that these bridge nodes, especially in the northern and central regions, form tight-knit clusters, indicating strong local connections. The ability to recognize these nodes allows for a more targeted and effective approach to planning and optimizing regional logistics and distribution networks, particularly for scenarios like food distribution across different regions.</p>
+
+          <br> 
+          <img src="img\hwy_graphLbetDistr.png" style="width:80%;">
+          <br> 
+          <img src="img\hwy_graphLbet.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+      <br>
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Global Closeness Centrality
+        </button>
+        <div class="accordion-content">
+
+          <p><strong>Closeness centrality</strong> measures how efficiently a node can reach all other nodes in a network. It differs from betweenness centrality by ignoring the node’s bridging role and instead focusing solely on reachability.</p>
+
+          <p>Nodes with high global closeness centrality are concentrated along the eastern coast, aligning with known seaport locations. These nodes can efficiently reach all other nodes—based on shortest weighted paths—not necessarily geographic proximity.</p>
+
+          <p>This global perspective provides a network-wide view of potential key entry points for logistics, including food or aid distribution, where speed and reach are critical.</p>
+          <br> 
+          <img src="img\hwy_graphGclose.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Local Closeness Centrality
+        </button>
+        <div class="accordion-content">
+
+          <p>In contrast to the global view, <strong>local closeness centrality</strong> highlights efficient nodes within regional contexts. Breaking the network into northern, central, and southern zones, reveals a broader spread of high-closeness nodes across each region.</p>
+
+          <p>Although the results resemble the global distribution, more nodes emerge with varied closeness levels, reflecting localized efficiencies. This view is particularly useful when designing region-specific strategies, such as identifying the best-positioned nodes for receiving incoming food transfers within each region.</p>
+
+          <p>Evaluating closeness at a local level supports more granular logistics planning and ensures responsiveness across multiple decentralized regions.</p>
+          <br> 
+          <img src="img\hwy_graphLcloseDistr.png" style="width:80%;">
+          <br> 
+          <img src="img\hwy_graphLclose.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+      <br>
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Global Degree Centrality
+        </button>
+        <div class="accordion-content">
+
+          <p><strong>Degree centrality</strong> quantifies how many direct connections a node has. In a global view, pairing this metric with closeness centrality reveals different node roles, such as hubs, shortcuts, distributed hubs, or peripheral nodes.</p>
+
+          <p>The plot visualizes this pairing across the entire network. Few nodes qualify as full hubs (high-degree, high-closeness); instead, many distributed hubs appear along the eastern coast. This pattern reinforces findings from closeness centrality alone, showing that coverage is prioritized over redundancy.</p>
+
+          <p>The global degree view is critical for identifying structural strengths and weaknesses that affect the network’s ability to scale or absorb disruptions.</p>
+          <br> 
+          <img src="img\hwy_graphGdeg.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">
+          Local Degree Centrality
+        </button>
+        <div class="accordion-content">
+
+          <p>Local degree centrality is visualized across the north, central, and south regions, with high-degree nodes marked in red, yellow, and cyan, respectively. The analysis shows that the south contains more highly connected nodes compared to the other regions.</p>
+
+          <p>This pattern aligns with similar findings in local betweenness, as both centrality types favor nodes with many connections. It indicates stronger intra-regional connectivity in the south, while the north and central regions remain more sparse.</p>
+
+          <p>While degree centrality identifies well-connected nodes, it is used here as a proxy for potential throughput. Actual capacity-based throughput would require volume or flow data, which are not incorporated in this analysis.</p>
+          <br> 
+          <img src="img\hwy_graphLdegDistr.png" style="width:80%;">
+          <br> 
+          <img src="img\hwy_graphLdeg.png" style="width:80%;">
+        </div> <!-- accordion content -->
+      </div> <!-- accordion item -->
+
+
+
+    </div> <!-- accordion -->
+  </div> <!-- content: nw as graph -->
+</div> <!-- content: reading hwy pattern -->
+
+<div class="content">
+  <div class="header-banner">
+    <h2>Comparison between networks</h2>
+  </div>
+  <br>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Reliability
+      </button>
+      <div class="accordion-content">
+        <div class="table-wrapper">
+
+          <h2>The ability of the network to function consistently and remain connected over time, even under stress or disruption.</h2>
+
+          <table class="network-table">
+            <thead>
+              <tr>
+                <th>Comparison</th>
+                <th>Rail & Highway</th>
+                <th>River Network</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Rail:</strong> Least reliable due to structural gaps and lack of redundancy.<br><br>
+                  <strong>Highway:</strong> More reliable, but not immune to disruption.<br><br>
+                  <strong>River:</strong> Least predictable; highly seasonal and vulnerable to climate.
+                </td>
+                <td>
+                  <strong>Rail:</strong>
+                  <ul>
+                    <li>Vulnerable in central regions due to lack of redundancy; dependent on highways for backup. No service in Mekong Delta.</li>
+                    <li>Defined as infrastructure resilience—can the line stay connected from north to south? Evaluated through physical layout and presence of alternatives (e.g., parallel highways).</li>
+                  </ul>
+                  <strong>Highway:</strong>
+                  <ul>
+                    <li>Highly connected, but weak points exist via cut nodes/edges, especially in central and border areas. No isolates.</li>
+                    <li>Measured via structural metrics like cut nodes and edges. NetworkX analysis identifies vulnerable points and overall network robustness.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Affected by <strong>seasonal flow variation</strong>; rivers may dry during the dry season.</li>
+                    <li>Spatial analysis (e.g., Kriging) used to estimate flow reliability.</li>
+                    <li>Defined as the consistency of river flow across wet and dry seasons. Inferred using hydrological data and spatial analysis methods (e.g., Kriging, IDW, spatial autocorrelation).</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+
+        </div> <!-- .table wrapper -->
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item --->
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Accessibility
+      </button>
+      <div class="accordion-content">
+        <div class="table-wrapper">
+          <h3>How easily different parts of the network can be entered or accessed—i.e., how simple it is to connect to the network from external locations.</h3>
+
+          <table class="network-table">
+            <thead>
+              <tr>
+                <th>Comparison</th>
+                <th>Rail & Highway</th>
+                <th>River Network</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>
+                  <strong>Highway:</strong> Most accessible—broad geographic reach and flexible access points.<br><br>
+                  <strong>Rail:</strong> Moderately accessible—strong where coverage exists, absent in some regions.<br><br>
+                  <strong>River:</strong> Accessible only where viable ports exist and water conditions are favorable.
+                </td>
+                <td>
+                  <strong>Rail:</strong>
+                  <ul>
+                    <li>Best in North Central and coastal areas. Capital cities prioritized; poor access in Mekong Delta.</li>
+                    <li>Based on proximity of cities (especially capital cities) to stations. High accessibility if a city has a nearby train station.</li>
+                  </ul>
+                  <strong>Highway:</strong>
+                  <ul>
+                    <li>Measured via centrality; decentralized hubs improve access. Coastal nodes enhance connectivity.</li>
+                    <li>Quantified using closeness and betweenness centrality. Accessibility improves with well-connected, high-centrality nodes and decentralization of hubs.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Port accessibility depends on node centrality; <strong>closeness and betweenness</strong> indicate ease of reaching other nodes and transferring to land modes.</li>
+                    <li>Evaluated using centrality metrics—especially closeness and betweenness.</li>
+                    <li>Ports that are well-positioned within the network and connect to land routes are more accessible.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- .table wrapper -->
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item --->
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Reachability
+      </button>
+      <div class="accordion-content">
+        <div class="table-wrapper">
+
+          <h2>The extent to which the network can cover distant or remote areas—i.e., the spatial range of the network.</h2>
+
+
+          <table class="network-table">
+            <thead>
+              <tr>
+                <th>Comparison</th>
+                <th>Rail & Highway</th>
+                <th>River Network</th>
+              </tr>
+            </thead>
+            <tbody>        
+              <tr>
+                <td>
+                  <strong>Highway:</strong> Highest reachability due to geographic coverage and flexible routing.<br><br>
+                  <strong>Rail:</strong> Moderate; depends on terrain and station placement.<br><br>
+                  <strong>River:</strong> Limited by geography and seasonality; supplemental rather than primary reach.
+                </td>
+                <td>
+                  <strong>Rail:</strong>
+                  <ul>
+                    <li>Reaches dense, economically active areas (e.g., Ha Noi, HCMC), but lacks penetration into remote southern areas.</li>
+                    <li>Based on line coverage and location of stations. Judged by whether remote but populated regions (e.g. Mekong Delta) are reachable.</li>
+                  </ul>
+                  <strong>Highway:</strong>
+                  <ul>
+                    <li>Spread-out node network with region-specific reachability analysis supports delivery to remote or rural zones.</li>
+                    <li>Evaluated using regional views of closeness and betweenness centrality to identify whether all areas—especially rural—can be served.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Reachability driven by node centrality; good where the network extends inland, but <strong>limited where rivers are dry or disconnected</strong>.</li>
+                    <li>Determined by analyzing the spread and centrality of river ports.</li>
+                    <li>High reachability means even inland or rural areas are serviced by the river network.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- .table wrapper -->
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item --->
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        Throughput
+      </button>
+      <div class="accordion-content">
+        <div class="table-wrapper">
+          <h2>The capacity of the network to move goods—how much volume can be transported over a given distance or time.</h2>
+          <table class="network-table">
+            <thead>
+              <tr>
+                <th>Comparison</th>
+                <th>Rail & Highway</th>
+                <th>River Network</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Highway:</strong> Best suited for consistent high-volume transport.<br><br>
+                  <strong>Rail:</strong> Underutilized but capable for distance hauling.<br><br>
+                  <strong>River:</strong> Variable throughput; context-dependent and constrained during dry periods.
+                </td>
+                <td>
+                  <strong>Rail:</strong>
+                  <ul>
+                    <li>Freight volume declining, but distance shipped increasing—indicates a role in long-haul despite inefficiencies.</li>
+                    <li>Initially excluded due to lack of public data, but qualitative info (e.g., freight-distance trends) later used to infer role in long-haul delivery.</li>
+                  </ul>
+                  <strong>Highway:</strong>
+                  <ul>
+                    <li>Freight volumes increasing. Post-COVID dip in tonnage offset by longer distances shipped; supports high-throughput usage.</li>
+                    <li>Measured using real data (freight and passenger volume, and freight-distance). Shows consistent use for long-distance cargo despite occasional dips.</li>
+                  </ul>
+                </td>
+                <td>
+                  <p>No direct measures</p>
+                  <ul>
+                    <li>inferred from port connectivity and freight-distance proxies. Throughput potential exists, but subject to seasonal constraints.</li>
+                    <li>Inferred through node degree (connectivity) and estimated freight movement.</li>
+                    <li>Seasonal limits reduce throughput reliability.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- .table wrapper -->
+      </div> <!-- accordion content -->
+    </div> <!-- accordion item --->
+  </div>
+</div> <!-- content div wrap workflow, methods, reading patterns-->   
+
+<div class="content">
+  <div>
+    <H3>Other info</H3>
+    <p>
+      The <strong>River Flow Direction</strong> tool in QGIS uses elevation data from a Digital Elevation Model to map how water flows across terrain. It shows the downhill direction of flow from each point, helping identify natural drainage paths and potential river channels.
+    </p>
+
+    <p>
+      The results corroborate the findings of other inland river network metrics by grounding them in physical geography. It validates where reliable flow supports transport, and, when considered alongside centrality and throughput data, helps explain which ports are viable year-round and which are limited by seasonal desiccation.
+    </p>
+  </div>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">
+        QGIS: River flow direction analysis
+      </button>
+
+      <div class="accordion-content">
+
+        <div class="content">
+          <div class="callout callout-warning">
+            <h3>Major rivers in northern provinces</h3>
+          </div>
+          <br><img src="img\Others3.png" style="width:80%;">
+        </div>
+
+        <div class="content">
+          <div class="callout callout-warning">
+            <h3>Major rivers in central provinces</h3>
+          </div>
+          <br><img src="img\Others2.png" style="width:80%;">            
+        </div>
+
+        <div class="content">
+          <div class="callout callout-warning">
+            <h3>Major rivers in southern provinces</h3>
+          </div>
+          <br><img src="img\Others1.png" style="width:80%;">            
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data sources -->
+  <div class="accordion">      
+    <div class="accordion-item">
+      <button class="accordion-button" aria-expanded="false">Data sources</button>
+      <div class="accordion-content">
+        <ol class="step-description">
+          <li>General Statistics Office of Vietnam, "Completed Results of the 2019 Vietnam Population and Housing Census," <a href="https://www.gso.gov.vn/en/population-and-houses-census/publication/?paged=2" target="_blank">Online</a>. [Accessed: Jan 02, 2024].</li>
+          <li>“Fao.org,” Cost and affordability of healthy diets across and within countries | Agrifood Economics | Food and Agriculture Organization of the United Nations, <a href="https://www.fao.org/agrifood-economics/publications/detail/en/c/1364162/" target="_blank">https://www.fao.org/agrifood-economics/publications/detail/en/c/1364162/</a> (accessed Oct. 12, 2023).</li>
+          <li>Anonymous, "Vietnam : Updating and adding to the list of national road and intercity fixed passenger transport routes network," MENA Report, 2022. Available: <a href="https://www.proquest.com/wire-feeds/vietnam-updating-adding-list-national-road/docview/2696448436/se-2" target="_blank">https://www.proquest.com/wire-feeds/vietnam-updating-adding-list-national-road/docview/2696448436/se-2</a>.</li>
+          <li>Anonymous, "Vietnam: Vietnam looks to address bottlenecks in logistics infrastructure," Asia News Monitor, 2021. Available: <a href="https://www.proquest.com/newspapers/vietnam-looks-address-bottlenecks-logistics/docview/2506643879/se-2" target="_blank">https://www.proquest.com/newspapers/vietnam-looks-address-bottlenecks-logistics/docview/2506643879/se-2</a>.</li>
+          <li>Anonymous, "Vietnam logistics & freight transport report - Q2 2022," Fitch Solutions Group Limited, London, 2022. Available: <a href="https://www.proquest.com/reports/vietnam-logistics-amp-freight-transport-report-q2/docview/2634637008/se-2" target="_blank">https://www.proquest.com/reports/vietnam-logistics-amp-freight-transport-report-q2/docview/2634637008/se-2</a>.</li>
+          <li>Khanh, G. L., & Quang, H. T. (2021). The sustainable development of railway system in Vietnam by GIS-based technologies. Les Ulis: EDP Sciences. <a href="https://doi.org/10.1051/e3sconf/202131003003" target="_blank">https://doi.org/10.1051/e3sconf/202131003003</a>.</li>
+          <li>“Ministry of Transport announces 2021-30 waterway plans,” vietnamnews.vn, <a href="https://vietnamnews.vn/society/1078726/ministry-of-transport-announces-2021-30-waterway-plans.html" target="_blank">https://vietnamnews.vn/society/1078726/ministry-of-transport-announces-2021-30-waterway-plans.html</a> (accessed Jan. 14, 2024).</li>
+          <li>Ministry of Transport, Vietnam Inland Waterway Administration (VIWA), "Inland Waterways Transportation in Vietnam: Current and Future - Challenge and Solution," presented at UNECE, February 2017. Available: <a href="https://unece.org/fileadmin/DAM/trans/doc/2017/itc/Panel_1_Mr._Hoang_Hong_Giang__Director_General_of_Inland_Water_Transportation_Department_of_Vietnam.pdf" target="_blank">https://unece.org/fileadmin/DAM/trans/doc/2017/itc/Panel_1_Mr._Hoang_Hong_Giang__Director_General_of_Inland_Water_Transportation_Department_of_Vietnam.pdf</a>.</li>
+          <li>Climate Technology Centre Network, “Localization of water resources management technology to adapt to climate change in Hong-Thai Binh River Basin,” <a href="https://www.ctc-n.org/technical-assistance/projects/localization-water-resources-management-technology-adapt-climate" target="_blank">https://www.ctc-n.org/technical-assistance/projects/localization-water-resources-management-technology-adapt-climate</a> (accessed Dec. 21, 2023).</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div> <!-- content wrapping QGIS, Data Source-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all the accordion buttons
+    const buttons = document.querySelectorAll('.accordion-button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Toggle the 'active' class on the parent accordion item
+        const accordionItem = button.parentElement;
+        accordionItem.classList.toggle('active');
+
+        // Toggle the aria-expanded attribute
+        const isExpanded = accordionItem.classList.contains('active');
+        button.setAttribute('aria-expanded', isExpanded);
+
+        // Close other sections when one is opened (optional)
+        const allAccordionItems = document.querySelectorAll('.accordion-item');
+        allAccordionItems.forEach(item => {
+          if (item !== accordionItem) {
+            item.classList.remove('active');
+            item.querySelector('.accordion-button').setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>
