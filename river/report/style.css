@@ -213,27 +213,5 @@
 .callout-warning { border-color: #D99982; background-color: #424A59; color: white; }
 .callout-info    { border-color: #17a2b8; background-color: #e7f5f9; }
 
-/*
-floating img
--------------
-position: fixed: Keeps it always visible, pinned to the screen.
 
-top: 50% + transform: translateY(-50%): Vertically centers it.
 
-right: 20px: Positions it from the right edge.
-
-z-index: Ensures it floats above other content.
-
-*/
-
-.floating-image {
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  background: white;
-  padding: 10px;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* stays on top */
-}
